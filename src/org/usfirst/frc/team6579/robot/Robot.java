@@ -17,6 +17,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * documentation. If you change the name of this class or the package after
  * creating this project, you must also update the manifest file in the resource
  * directory.
+ *
+ * Created 28/01/2018 by Jiah Pang
  */
 public class  Robot extends IterativeRobot {
 	private VictorSP m_frontLeft = new VictorSP(0);
@@ -132,6 +134,8 @@ public class  Robot extends IterativeRobot {
             pdp.clearStickyFaults();
         }
 
+       // SmartDashboard.put
+
 	}
 
 	/**
@@ -139,5 +143,18 @@ public class  Robot extends IterativeRobot {
 	 */
 	@Override
 	public void testPeriodic() {
+
+		//resets the encoder values
+		if (m_stick.getRawButton(11)){
+			sampleEncoder.reset();
+		}
+		//resets the PDP's sticky faults
+		if (m_stick.getRawButton(12)){
+			pdp.clearStickyFaults();
+		}
+
+        //putting the current of the right side (channels x & y)
+        SmartDashboard.putNumber("Right current 14",pdp.getCurrent(14));
+        SmartDashboard.putNumber("Right current 15",pdp.getCurrent(15));
 	}
 }
