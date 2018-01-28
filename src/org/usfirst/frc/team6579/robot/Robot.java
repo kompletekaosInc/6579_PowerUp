@@ -18,7 +18,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
-public class Robot extends IterativeRobot {
+public class  Robot extends IterativeRobot {
 	private VictorSP m_frontLeft = new VictorSP(0);
 	private VictorSP m_rearLeft = new VictorSP(1);
 	private SpeedControllerGroup m_left = new SpeedControllerGroup(m_frontLeft, m_rearLeft);
