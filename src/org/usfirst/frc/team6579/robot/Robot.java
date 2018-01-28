@@ -21,15 +21,15 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * Created 28/01/2018 by Jiah Pang
  */
 public class  Robot extends IterativeRobot {
-	private VictorSP m_frontLeft = new VictorSP(0);
-	private VictorSP m_rearLeft = new VictorSP(1);
-	private SpeedControllerGroup m_left = new SpeedControllerGroup(m_frontLeft, m_rearLeft);
-	
-	private VictorSP m_frontRight = new VictorSP(2);
-	private VictorSP m_rearRight = new VictorSP(3);
-	private SpeedControllerGroup m_right = new SpeedControllerGroup(m_frontRight, m_rearRight);
-	
-	private DifferentialDrive m_robotDrive = new DifferentialDrive(m_left, m_right);
+//	private VictorSP m_frontLeft = new VictorSP(0);
+//	private VictorSP m_rearLeft = new VictorSP(1);
+//	private SpeedControllerGroup m_left = new SpeedControllerGroup(m_frontLeft, m_rearLeft);
+//
+//	private VictorSP m_frontRight = new VictorSP(2);
+//	private VictorSP m_rearRight = new VictorSP(3);
+//	private SpeedControllerGroup m_right = new SpeedControllerGroup(m_frontRight, m_rearRight);
+//
+//	private DifferentialDrive m_robotDrive = new DifferentialDrive(m_left, m_right);
 	
 	// replacing with Speed groups
 	//private DifferentialDrive m_robotDrive = new DifferentialDrive(new Spark(0), new Spark(1));
@@ -69,12 +69,12 @@ public class  Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
-		// Drive for 2 seconds
-		if (m_timer.get() < 2.0) {
-			m_robotDrive.arcadeDrive(0.5, 0.0); // drive forwards half speed
-		} else {
-			m_robotDrive.stopMotor(); // stop robot
-		}
+//		// Drive for 2 seconds
+//		if (m_timer.get() < 2.0) {
+//			m_robotDrive.arcadeDrive(0.5, 0.0); // drive forwards half speed
+//		} else {
+//			m_robotDrive.stopMotor(); // stop robot
+//		}
 	}
 
 	/**
@@ -97,9 +97,9 @@ public class  Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		m_robotDrive.arcadeDrive(m_stick.getY(), m_stick.getX());
+		//m_robotDrive.arcadeDrive(m_stick.getY(), m_stick.getX());
 
-        SmartDashboard.putNumber("m_left power", m_left.get());
+        //SmartDashboard.putNumber("m_left power", m_left.get());
 
 
         //Sets up the encoder for getting values

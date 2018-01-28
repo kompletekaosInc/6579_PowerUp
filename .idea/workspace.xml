@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="13fa80e3-92fc-497d-95f5-533fc157bb3a" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/control/DriverControl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/control/JoystickControl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/control/OperatorControl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/control/RobotControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/org/usfirst/frc/team6579/robot/Robot.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/org/usfirst/frc/team6579/robot/Robot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/org/usfirst/frc/team6579/robot/subsystem/Drivetrain.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/org/usfirst/frc/team6579/robot/subsystem/Drivetrain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/FRCUserProgram.jar" beforeDir="false" afterPath="$PROJECT_DIR$/dist/FRCUserProgram.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/Robot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/subsystem/Drivetrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/subsystem/Drivetrain.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -18,21 +27,81 @@
       <file leaf-file-name="Robot.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/Robot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="29" column="95" lean-forward="true" selection-start-line="23" selection-start-column="4" selection-end-line="29" selection-end-column="95" />
+            <state relative-caret-position="378">
+              <caret line="101" column="10" selection-start-line="101" selection-start-column="10" selection-end-line="101" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Drivetrain.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AutoStrategy.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/autonomous/AutoStrategy.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="12" column="57" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RobotControl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/control/RobotControl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <marker date="1517114151000" expanded="true" signature="287:761" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DriverControl.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/control/DriverControl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="570">
+              <caret line="38" column="7" lean-forward="true" selection-start-line="38" selection-start-column="7" selection-end-line="38" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JoystickControl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/control/JoystickControl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="5" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="19" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OperatorControl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/control/OperatorControl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Drivetrain.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/subsystem/Drivetrain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="28" column="71" selection-start-line="28" selection-start-column="71" selection-end-line="28" selection-end-column="71" />
+            <state relative-caret-position="556">
+              <caret line="208" column="10" selection-start-line="208" selection-start-column="10" selection-end-line="208" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2021#2022#0" expanded="true" />
                 <element signature="e#2050#2051#0" expanded="true" />
+                <element signature="e#6318#6319#0" expanded="true" />
+                <element signature="e#6371#6372#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -52,24 +121,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="360">
               <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SubSystem.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/subsystem/SubSystem.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="89" selection-start-line="18" selection-start-column="89" selection-end-line="18" selection-end-column="89" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Toughbox.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/subsystem/Toughbox.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="2" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -102,19 +153,24 @@
         <option value="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/subsystems/SubSystem.java" />
         <option value="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/subsystem/Toughbox.java" />
         <option value="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/autonomous/AutoStrategy.java" />
-        <option value="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/Robot.java" />
         <option value="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/subsystem/SubSystem.java" />
         <option value="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/subsystem/Climber.java" />
         <option value="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/subsystem/Intake.java" />
         <option value="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/subsystem/Lift.java" />
+        <option value="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/control/robotControl.java" />
+        <option value="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/Robot.java" />
+        <option value="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/control/RobotControl.java" />
+        <option value="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/control/OperatorControl.java" />
+        <option value="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/control/JoystickControl.java" />
         <option value="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/subsystem/Drivetrain.java" />
+        <option value="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/control/DriverControl.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="60" />
     <option name="y" value="34" />
-    <option name="width" value="2177" />
+    <option name="width" value="2490" />
     <option name="height" value="1289" />
   </component>
   <component name="ProjectView">
@@ -187,6 +243,17 @@
               <item name="team6579" type="462c0819:PsiDirectoryNode" />
               <item name="robot" type="462c0819:PsiDirectoryNode" />
               <item name="autonomous" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="6579_PowerUp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="6579_PowerUp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+              <item name="usfirst" type="462c0819:PsiDirectoryNode" />
+              <item name="frc" type="462c0819:PsiDirectoryNode" />
+              <item name="team6579" type="462c0819:PsiDirectoryNode" />
+              <item name="robot" type="462c0819:PsiDirectoryNode" />
+              <item name="control" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="6579_PowerUp" type="b2602c69:ProjectViewProjectNode" />
@@ -310,7 +377,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="60" y="34" width="2177" height="1289" extended-state="0" />
+    <frame x="60" y="34" width="2490" height="1289" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" />
@@ -322,10 +389,10 @@
       <window_info anchor="right" id="Maven Projects" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.32998326" />
+      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.32998326" />
       <window_info id="Capture Tool" />
       <window_info id="Designer" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2496487" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21772876" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -344,13 +411,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/autonomous/AutoStrategy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="12" column="57" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/subsystem/SubSystem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -386,21 +446,71 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/autonomous/AutoStrategy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="12" column="57" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/control/OperatorControl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/control/JoystickControl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="5" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="19" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/control/RobotControl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1517114151000" expanded="true" signature="287:761" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/Robot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="29" column="95" lean-forward="true" selection-start-line="23" selection-start-column="4" selection-end-line="29" selection-end-column="95" />
+        <state relative-caret-position="378">
+          <caret line="101" column="10" selection-start-line="101" selection-start-column="10" selection-end-line="101" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/subsystem/Drivetrain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="28" column="71" selection-start-line="28" selection-start-column="71" selection-end-line="28" selection-end-column="71" />
+        <state relative-caret-position="556">
+          <caret line="208" column="10" selection-start-line="208" selection-start-column="10" selection-end-line="208" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2021#2022#0" expanded="true" />
             <element signature="e#2050#2051#0" expanded="true" />
+            <element signature="e#6318#6319#0" expanded="true" />
+            <element signature="e#6371#6372#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/control/DriverControl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="38" column="7" lean-forward="true" selection-start-line="38" selection-start-column="7" selection-end-line="38" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

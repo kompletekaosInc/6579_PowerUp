@@ -25,18 +25,21 @@ public class Drivetrain implements SubSystem {
 //    private Toughbox toughbox1 = new Toughbox(0,1);
 //    private Toughbox toughbox2 = new Toughbox(2,3);
 
+    private VictorSP victorPort0 = new VictorSP(0);
+    private VictorSP victorPort1 = new VictorSP(1);
 
-    private SpeedControllerGroup toughbox1 = new SpeedControllerGroup(0,1);
 
-    private VictorSP m_frontRight = new VictorSP(2);
-    private VictorSP m_rearRight = new VictorSP(3);
-    private SpeedControllerGroup m_right = new SpeedControllerGroup(m_frontRight, m_rearRight);
+    private SpeedControllerGroup toughbox1 = new SpeedControllerGroup(victorPort0,victorPort1);
+
+    private VictorSP victorPort2 = new VictorSP(2);
+    private VictorSP victorPort3 = new VictorSP(3);
+    private SpeedControllerGroup toughbox2 = new SpeedControllerGroup(victorPort2,victorPort3);
 
 
     //left drive set
-    private Toughbox leftToughbox = toughbox1;
+    private SpeedControllerGroup leftToughbox = toughbox1;
     //right drive set
-    private Toughbox rightToughbox = toughbox2;
+    private SpeedControllerGroup rightToughbox = toughbox2;
 
     //gyro
     private ADXRS450_Gyro gyro = null;
@@ -196,6 +199,15 @@ public class Drivetrain implements SubSystem {
         hardStop();
         stop();
 
+    }
+
+    /**
+     * Arcade drive using the WPILIB Differential Drive methods
+     * @param stickX
+     * @param stickY
+     */
+    public void arcadeDiffDrive(double stickX, double stickY){
+        robotDrive.arcadeDrive(stickX,stickY);
     }
 
     @Override
