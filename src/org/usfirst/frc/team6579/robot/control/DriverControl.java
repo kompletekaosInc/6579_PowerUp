@@ -77,6 +77,7 @@ public class DriverControl extends JoystickControl  {
 
     }
     protected void processButton10(Robot robot ) {
+        robot.getDrivetrain().drivePulses(48);
 
     }
     protected void processButton11(Robot robot) {
@@ -84,7 +85,7 @@ public class DriverControl extends JoystickControl  {
 
     }
     protected void processButton12(Robot robot ) {
-        robot.getDrivetrain().driveEncoder(630,0.2);
+        robot.getDrivetrain().driveEncoder(200,0.2);
 
     }
     protected void processNoButtons(Robot robot ) {

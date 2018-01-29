@@ -256,9 +256,21 @@ public class Drivetrain implements SubSystem {
         }
     }
 
-    @Override
-    public void publishStats() {
+    public void drivePulses(double pulses){
 
+        while (drivetrainEncoder.getRaw()<pulses){
+            setPower(0.2,0.2);
+
+        }
+        if (drivetrainEncoder.getDistance()>=pulses){
+            hardStop();
+        }
+    }
+
+    @Override
+    public void publishStats(){
+        SmartDashboard.putNumber("Encoder Distance", drivetrainEncoder.getDistance());
+        SmartDashboard.putNumber("Encoder Pulses", drivetrainEncoder.getRaw());
     }
 
     @Override
