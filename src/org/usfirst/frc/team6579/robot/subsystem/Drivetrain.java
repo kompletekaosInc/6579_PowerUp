@@ -94,9 +94,9 @@ public class Drivetrain implements SubSystem {
      */
     public void setPower(double leftPower, double rightPower){
         //sets the left toughbox
-        leftToughbox.set(leftPower);
+        leftToughbox.set(-leftPower);
         //sets the right toughbox
-        rightToughbox.set(-rightPower);
+        rightToughbox.set(rightPower);
     }
 
     /**
@@ -253,6 +253,7 @@ public class Drivetrain implements SubSystem {
         }
         if (drivetrainEncoder.getDistance()>=distance){
             hardStop();
+            
         }
     }
 
