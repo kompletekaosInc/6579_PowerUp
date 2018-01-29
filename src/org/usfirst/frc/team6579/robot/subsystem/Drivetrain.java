@@ -207,7 +207,8 @@ public class Drivetrain implements SubSystem {
      * @param stickY
      */
     public void arcadeDiffDrive(double stickX, double stickY){
-        robotDrive.arcadeDrive(stickX,stickY);
+        //This is counter-intuitive but it's back to front because that's how WPILIB works, we change it for our logical minds
+        robotDrive.arcadeDrive(stickY,stickX);
     }
 
     @Override
