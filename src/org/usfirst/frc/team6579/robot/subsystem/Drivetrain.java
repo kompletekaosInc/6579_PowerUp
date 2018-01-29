@@ -96,7 +96,7 @@ public class Drivetrain implements SubSystem {
         //sets the left toughbox
         leftToughbox.set(leftPower);
         //sets the right toughbox
-        rightToughbox.set(rightPower);
+        rightToughbox.set(-rightPower);
     }
 
     /**
@@ -229,6 +229,31 @@ public class Drivetrain implements SubSystem {
     public void arcadeDiffDrive(double stickX, double stickY){
         //This is counter-intuitive but it's back to front because that's how WPILIB works, we change it for our logical minds
         robotDrive.arcadeDrive(stickY,stickX);
+    }
+
+    /**
+     * resets the encoder when called
+     */
+    public void resetEncoder(){
+        drivetrainEncoder.reset();
+    }
+
+    /**
+     * Drives the robot a set distance using the encoder
+     * @param distance
+     * @param power
+     */
+    public void driveEncoder(double distance, double power){
+
+
+
+        while (drivetrainEncoder.getDistance()<distance){
+            setPower(power,power);
+            SmartDashboard.putNumber("Encoder distance", drivetrainEncoder.getDistance());
+        }
+        if (drivetrainEncoder.getDistance()>=distance){
+            hardStop();
+        }
     }
 
     @Override

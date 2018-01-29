@@ -76,13 +76,15 @@ public class DriverControl extends JoystickControl  {
     protected void processButton9(Robot robot ) {
 
     }
-    protected void processButton11(Robot robot ) {
+    protected void processButton10(Robot robot ) {
 
     }
-    protected void processButton10(Robot robot) {
+    protected void processButton11(Robot robot) {
+        robot.getDrivetrain().resetEncoder();
 
     }
     protected void processButton12(Robot robot ) {
+        robot.getDrivetrain().driveEncoder(630,0.2);
 
     }
     protected void processNoButtons(Robot robot ) {
