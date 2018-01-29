@@ -120,11 +120,7 @@ public class  Robot extends IterativeRobot {
 	@Override
 	public void teleopInit() {
 //        //Encoder sampleEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
-//        sampleEncoder.setMaxPeriod(.1);
-//        sampleEncoder.setMinRate(10);
-//        sampleEncoder.setDistancePerPulse(5);
-//        sampleEncoder.setReverseDirection(true);
-//        sampleEncoder.setSamplesToAverage(7);
+//
 //
 //        sampleEncoder.reset();
 	}

@@ -1,6 +1,7 @@
 package org.usfirst.frc.team6579.robot.subsystem;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -44,6 +45,9 @@ public class Drivetrain implements SubSystem {
     //gyro
     private ADXRS450_Gyro gyro = null;
 
+    //encoder
+    private Encoder drivetrainEncoder = null;
+
     //defining the drivetrain type
     private DifferentialDrive robotDrive = new DifferentialDrive(leftToughbox,rightToughbox);
 
@@ -64,6 +68,22 @@ public class Drivetrain implements SubSystem {
         {
             System.out.println("Gyro not installed correctly" + e.toString());
             SmartDashboard.putBoolean("Gyro Installed", false);
+        }
+
+        try{
+            drivetrainEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
+            SmartDashboard.putBoolean("Encoder installed", true);
+
+            drivetrainEncoder.setMaxPeriod(.1);
+            drivetrainEncoder.setMinRate(10);
+            drivetrainEncoder.setDistancePerPulse(0.3175);
+            drivetrainEncoder.setReverseDirection(true);
+            drivetrainEncoder.setSamplesToAverage(7);
+
+            drivetrainEncoder.reset();
+        } catch (Exception e){
+            System.out.println("Encoder not installed correctly" + e.toString());
+            SmartDashboard.putBoolean("Encoder installed", false);
         }
     }
 
