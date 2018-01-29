@@ -13,12 +13,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team6579.robot.control.DriverControl;
 import org.usfirst.frc.team6579.robot.control.OperatorControl;
 import org.usfirst.frc.team6579.robot.control.RobotControl;
-import org.usfirst.frc.team6579.robot.subsystem.Climber;
-import org.usfirst.frc.team6579.robot.subsystem.Drivetrain;
-import org.usfirst.frc.team6579.robot.subsystem.Intake;
-import org.usfirst.frc.team6579.robot.subsystem.Lift;
+import org.usfirst.frc.team6579.robot.subsystem.*;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -133,6 +131,8 @@ public class  Robot extends IterativeRobot {
 
 	    robotControl.giveCommands(this);
 
+        publishSubSystemStats();
+
 
 
 
@@ -207,5 +207,16 @@ public class  Robot extends IterativeRobot {
 //        SmartDashboard.putNumber("Right current 14",pdp.getCurrent(14));
 //        SmartDashboard.putNumber("Right current 15",pdp.getCurrent(15));
 	}
+    public void publishSubSystemStats()
+    {
+        Iterator i = subSystems.iterator();
+        while (i.hasNext())
+        {
+            SubSystem nextSubSystem = (SubSystem) i.next();
+            nextSubSystem.publishStats();
+        }
+
+
+    }
 }
 
