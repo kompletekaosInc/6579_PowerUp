@@ -39,6 +39,60 @@ public class DriverControl extends JoystickControl  {
      */
     @Override
     public void giveCommands(Robot robot) {
+        super.giveCommands(robot);
+
+        arcadeDrive(robot.getDrivetrain());
+
+    }
+
+    /**
+     * These following methods are all for overriding the buttons on the joystick
+     * @param robot
+     */
+    protected void processButton1(Robot robot ){
+
+    }
+    protected void processButton2(Robot robot ) {
+
+    }
+    protected void processButton3(Robot robot ) {
+
+    }
+    protected void processButton4(Robot robot ) {
+
+    }
+    protected void processButton5(Robot robot ) {
+
+    }
+    protected void processButton6(Robot robot ) {
+
+    }
+    protected void processButton7(Robot robot ) {
+
+    }
+    protected void processButton8(Robot robot ) {
+
+    }
+    protected void processButton9(Robot robot ) {
+
+    }
+    protected void processButton11(Robot robot ) {
+
+    }
+    protected void processButton10(Robot robot) {
+
+    }
+    protected void processButton12(Robot robot ) {
+
+    }
+    protected void processNoButtons(Robot robot ) {
+
+    }
+
+    //@Override
+    protected void processThrottle(Robot robot) {
+        //super.processThrottle(robot);
+
 
     }
 }
