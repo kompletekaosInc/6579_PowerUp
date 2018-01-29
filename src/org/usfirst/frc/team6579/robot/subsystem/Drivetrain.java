@@ -51,6 +51,8 @@ public class Drivetrain implements SubSystem {
     //defining the drivetrain type
     private DifferentialDrive robotDrive = new DifferentialDrive(leftToughbox,rightToughbox);
 
+    double distancePerPulse = 0.2493639169;
+
     /**
      * Declaration of class, tries for gyro and sets the gear side as the default front of robot
      */
@@ -76,9 +78,10 @@ public class Drivetrain implements SubSystem {
 
             drivetrainEncoder.setMaxPeriod(.1);
             drivetrainEncoder.setMinRate(10);
-            drivetrainEncoder.setDistancePerPulse(0.3175);
+            drivetrainEncoder.setDistancePerPulse(0.079375);
             drivetrainEncoder.setReverseDirection(true);
             drivetrainEncoder.setSamplesToAverage(7);
+
 
             drivetrainEncoder.reset();
         } catch (Exception e){
@@ -245,27 +248,34 @@ public class Drivetrain implements SubSystem {
      */
     public void driveEncoder(double distance, double power){
 
+        double targetPulses = 0;
 
+        targetPulses = (distance / distancePerPulse);
+        SmartDashboard.putNumber("Target Pulses", targetPulses);
 
-        while (drivetrainEncoder.getDistance()<distance){
+        //double buffer = 0.1*targetPulses;
+
+        while (drivetrainEncoder.getRaw()<targetPulses){
             setPower(power,power);
             SmartDashboard.putNumber("Encoder distance", drivetrainEncoder.getDistance());
         }
-        if (drivetrainEncoder.getDistance()>=distance){
+        if (drivetrainEncoder.getRaw()>=targetPulses){
             hardStop();
-            
+
         }
+
     }
 
-    public void drivePulses(double pulses){
+    public void drivePulses(int pulses){
 
         while (drivetrainEncoder.getRaw()<pulses){
             setPower(0.2,0.2);
 
         }
-        if (drivetrainEncoder.getDistance()>=pulses){
+        if (drivetrainEncoder.getRaw()>=pulses){
             hardStop();
         }
+
     }
 
     @Override
