@@ -23,13 +23,34 @@ public class DriverControl extends JoystickControl  {
 
     }
 
+//    private double throttleX(Robot robot){
+//
+//        double throttleValue = -stick.getThrottle();
+//
+//        double newX = stick.getX() * throttleValue;
+//        double newY = stick.getY() * throttleValue;
+//
+//        return newX;
+//
+//
+//    }
+
     /**
      * Arcade drive method used for driving the robot around. Only used by this class
+     *
+     * Now has some throttle code, ToDo: test throttle code on moving robot
      * @param drivetrain
      */
     private void arcadeDrive(Drivetrain drivetrain){
 
-        drivetrain.arcadeDiffDrive(stick.getX(),stick.getY());
+        double throttleValue = (stick.getThrottle()-1)/2;
+
+        double newX = stick.getX() * throttleValue;
+        double newY = stick.getY() * throttleValue;
+
+        //drivetrain.arcadeDiffDrive(stick.getX(),stick.getY());
+
+        drivetrain.arcadeDiffDrive(newX,newY);
 
     }
 
