@@ -15,7 +15,10 @@ import org.usfirst.frc.team6579.robot.control.OperatorControl;
 import org.usfirst.frc.team6579.robot.control.RobotControl;
 import org.usfirst.frc.team6579.robot.subsystem.*;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -81,12 +84,25 @@ public class  Robot extends IterativeRobot {
         }
 
         try {
-            robotControl = new DriverControl();
-            operatorControl = new OperatorControl();
+            //assume this is USB port 0
+            robotControl = new DriverControl();  //assume this is USB port 0
+            SmartDashboard.putBoolean("Robot control available", true);
         }
         catch(Exception e){
             System.out.println("Error loading robot controllers");
             e.printStackTrace();
+            SmartDashboard.putBoolean("Robot control available", false);
+        }
+
+        try {
+            //assume this is USB port 1
+            operatorControl = new OperatorControl();
+            SmartDashboard.putBoolean("Operator control available", true);
+        }
+        catch(Exception e){
+            System.out.println("Error loading operator controllers");
+            e.printStackTrace();
+            SmartDashboard.putBoolean("Operator control available", false);
         }
 	}
 
@@ -117,6 +133,9 @@ public class  Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopInit() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        System.out.println("teleopInit: [build=JustinGriff5:24]" + dateFormat.format(date));
 //        //Encoder sampleEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
 //
 //
@@ -128,8 +147,12 @@ public class  Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-
-	    robotControl.giveCommands(this);
+        if (robotControl != null) {
+            robotControl.giveCommands(this);
+        }
+        if (operatorControl != null) {
+            operatorControl.giveCommands ( this);
+        }
 
         publishSubSystemStats();
 

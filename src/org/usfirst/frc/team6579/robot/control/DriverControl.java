@@ -2,6 +2,7 @@ package org.usfirst.frc.team6579.robot.control;
 
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team6579.robot.Robot;
 import org.usfirst.frc.team6579.robot.subsystem.Drivetrain;
 
@@ -20,7 +21,6 @@ public class DriverControl extends JoystickControl  {
      */
     public DriverControl(){
         super(0);
-
     }
 
 //    private double throttleX(Robot robot){
@@ -43,7 +43,7 @@ public class DriverControl extends JoystickControl  {
      */
     private void arcadeDrive(Drivetrain drivetrain){
 
-        double throttleValue = (stick.getThrottle()-1)/2;
+        double throttleValue = (stick.getThrottle()-1)/-2;
 
         double newX = stick.getX() * throttleValue;
         double newY = stick.getY() * throttleValue;
@@ -77,39 +77,53 @@ public class DriverControl extends JoystickControl  {
 
     }
     protected void processButton3(Robot robot ) {
-
+        robot.getClimber().lowerArm();
     }
     protected void processButton4(Robot robot ) {
-
+        robot.getClimber().raiseArm();
     }
     protected void processButton5(Robot robot ) {
-
+        robot.getLift().liftDown(100);
     }
     protected void processButton6(Robot robot ) {
+        robot.getLift().liftUp(100);
 
     }
     protected void processButton7(Robot robot ) {
+        //robot.getIntake().intakeSpitOut(0.5);
+        robot.getIntake().intakeSuckIn(0.05);
 
     }
     protected void processButton8(Robot robot ) {
 
+        robot.getIntake().intakeSuckIn(1);
+
     }
     protected void processButton9(Robot robot ) {
+        robot.getIntake().intakeSpitOut(1);
 
     }
     protected void processButton10(Robot robot ) {
-        robot.getDrivetrain().drivePulses(192);
+        //robot.getDrivetrain().drivePulses(192);
+        robot.getIntake().intakeSuckIn(0.25);
 
     }
     protected void processButton11(Robot robot) {
-        robot.getDrivetrain().resetEncoder();
+        //robot.getDrivetrain().resetEncoder();
+        robot.getIntake().intakeSuckIn(0.5);
 
     }
     protected void processButton12(Robot robot ) {
-        robot.getDrivetrain().driveEncoder(200,0.2);
+        //robot.getDrivetrain().driveEncoder(200,0.2);
+        robot.getIntake().intakeSuckIn(0.75);
 
     }
     protected void processNoButtons(Robot robot ) {
+        robot.getLift().stop();
+        robot.getClimber().stopArm();
+        robot.getIntake().stopIntake();
+        SmartDashboard.putNumber("Throttle",stick.getThrottle());
+        SmartDashboard.putNumber("AdjustedThrottle",((stick.getThrottle()-1)/-2));
 
     }
 
@@ -119,4 +133,5 @@ public class DriverControl extends JoystickControl  {
 
 
     }
+
 }

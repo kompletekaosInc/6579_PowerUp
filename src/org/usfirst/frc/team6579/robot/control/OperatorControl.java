@@ -12,20 +12,34 @@ import org.usfirst.frc.team6579.robot.subsystem.Lift;
  *
  * Created 28/01/2018 by Jiah Pang
  */
-public class OperatorControl implements RobotControl {
-
-
-    private Joystick operatorStick = new Joystick(1);
-
+public class OperatorControl extends JoystickControl {
 
 
     /**
-     * This is the method that controls the robot.
-     * This method needs a robot and should only be used in teleop
-     * @param robot
+     * Driver will be using a Joystick from port 1.
      */
-    @Override
-    public void giveCommands(Robot robot) {
+    public OperatorControl(){
+        super(1);
 
     }
+
+    @Override
+    protected void processButton9(Robot robot) {
+        System.out.println("in processButton9");
+        robot.getClimber().stopArm();
+    }
+
+    @Override
+    protected void processButton11(Robot robot) {
+        System.out.println("in processButton11");
+       robot.getClimber().lowerArm();
+    }
+
+    @Override
+    protected void processButton12(Robot robot) {
+        System.out.println("in processButton12");
+        robot.getClimber().raiseArm();
+    }
+
+
 }

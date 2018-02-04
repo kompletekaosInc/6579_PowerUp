@@ -1,5 +1,8 @@
 package org.usfirst.frc.team6579.robot.subsystem;
 
+import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -17,6 +20,48 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * Created by Jiah Pang on 28/01/2018
  */
 public class Intake implements SubSystem {
+
+
+    //Left motor controller group
+    private VictorSP intakeLeft4 = new VictorSP(4);
+    private VictorSP intakeLeft5 = new VictorSP(5);
+    private SpeedControllerGroup leftIntakeMotors = new SpeedControllerGroup(intakeLeft4,intakeLeft5);
+
+    //Right motor controller group
+    private VictorSP intakeRight8 = new VictorSP(8);
+    private VictorSP intakeRight9 = new VictorSP(9);
+    private SpeedControllerGroup rightIntakeMotors = new SpeedControllerGroup(intakeRight8,intakeRight9);
+
+
+    /**
+     * This method sucks in a cube
+     * the right motor power is inverted
+     * @param power
+     */
+    public void intakeSuckIn(double power){
+
+       //This sets the powers for the motor controllers
+       leftIntakeMotors.set(power);
+       rightIntakeMotors.set(-power);
+    }
+
+    /**
+     * This method spits out the cube
+     * The left motor power is inverted
+     * @param power
+     */
+    public void intakeSpitOut(double power){
+
+        //this sets the power
+        leftIntakeMotors.set(-power);
+        rightIntakeMotors.set(power);
+    }
+
+    public void stopIntake(){
+
+        leftIntakeMotors.set(0);
+        rightIntakeMotors.set(0);
+    }
 
 
 
