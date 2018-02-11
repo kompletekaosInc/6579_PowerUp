@@ -58,6 +58,10 @@ public class Climber implements SubSystem {
         climberWinch.set(-power);
     }
 
+    public void stopWinch(){
+        climberWinch.set(0);
+    }
+
     @Override
     public void publishStats() {
         SmartDashboard.putNumber("Climber Arm Power", armMotor.get());

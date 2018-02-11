@@ -25,8 +25,8 @@ public class OperatorControl extends JoystickControl {
 
     @Override
     protected void processButton9(Robot robot) {
-        System.out.println("in processButton9");
-        robot.getClimber().stopArm();
+        //System.out.println("in processButton9");
+        //robot.getClimber().stopArm();
     }
 
     @Override
@@ -56,5 +56,37 @@ public class OperatorControl extends JoystickControl {
         robot.getClimber().winchRaise(75);
     }
 
+    @Override
+    protected void processButton1(Robot robot){
+        robot.getIntake().intakeSuckIn(1);
+    }
+
+    @Override
+    protected void processButton2(Robot robot) {
+        robot.getIntake().intakeSpitOut(1);
+    }
+
+    @Override
+    protected void processButton10(Robot robot){
+        robot.getIntake().intakeSuckIn(0.1);
+    }
+
+    @Override
+    protected void processButton8(Robot robot){
+        robot.getLift().liftUp(1);
+    }
+
+    @Override
+    protected void processButton7(Robot robot){
+        robot.getLift().liftDown(1);
+    }
+
+    @Override
+    protected void processNoButtons(Robot robot){
+        robot.getLift().stop();
+        robot.getClimber().stopWinch();
+        robot.getClimber().stopArm();
+        robot.getIntake().stopIntake();
+    }
 
 }

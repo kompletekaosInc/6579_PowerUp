@@ -71,9 +71,11 @@ public class DriverControl extends JoystickControl  {
      * @param robot
      */
     protected void processButton1(Robot robot ){
+        robot.getIntake().intakeSuckIn(1);
 
     }
     protected void processButton2(Robot robot ) {
+        robot.getIntake().intakeSpitOut(1);
 
     }
 //    protected void processButton3(Robot robot ) {
@@ -83,39 +85,39 @@ public class DriverControl extends JoystickControl  {
 //        robot.getClimber().raiseArm();
 //    }
     protected void processButton5(Robot robot ) {
-        robot.getLift().liftDown(100);
+        //robot.getLift().liftDown(100);
     }
     protected void processButton6(Robot robot ) {
-        robot.getLift().liftUp(100);
+        //robot.getLift().liftUp(100);
 
     }
     protected void processButton7(Robot robot ) {
         //robot.getIntake().intakeSpitOut(0.5);
-        robot.getIntake().intakeSuckIn(0.05);
+        //robot.getIntake().intakeSuckIn(0.05);
 
     }
     protected void processButton8(Robot robot ) {
 
-        robot.getIntake().intakeSuckIn(1);
+        //robot.getIntake().intakeSuckIn(1);
 
     }
     protected void processButton9(Robot robot ) {
-        robot.getIntake().intakeSpitOut(1);
+        //robot.getIntake().intakeSpitOut(1);
 
     }
     protected void processButton10(Robot robot ) {
         //robot.getDrivetrain().drivePulses(192);
-        robot.getIntake().intakeSuckIn(0.25);
+        //robot.getIntake().intakeSuckIn(0.25);
 
     }
     protected void processButton11(Robot robot) {
         //robot.getDrivetrain().resetEncoder();
-        robot.getIntake().intakeSuckIn(0.5);
+        //robot.getIntake().intakeSuckIn(0.5);
 
     }
     protected void processButton12(Robot robot ) {
         //robot.getDrivetrain().driveEncoder(200,0.2);
-        robot.getIntake().intakeSuckIn(0.75);
+        //robot.getIntake().intakeSuckIn(0.75);
 
     }
     protected void processNoButtons(Robot robot ) {
@@ -124,6 +126,7 @@ public class DriverControl extends JoystickControl  {
         robot.getIntake().stopIntake();
         SmartDashboard.putNumber("Throttle",stick.getThrottle());
         SmartDashboard.putNumber("AdjustedThrottle",((stick.getThrottle()-1)/-2));
+        robot.getClimber().stopWinch();
 
     }
 
