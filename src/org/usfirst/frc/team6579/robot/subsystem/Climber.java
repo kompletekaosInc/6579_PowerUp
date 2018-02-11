@@ -18,7 +18,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Climber implements SubSystem {
     private PowerDistributionPanel pdp = new PowerDistributionPanel();
 
-    private VictorSP armMotor = new VictorSP(7);
+    private VictorSP armMotor = new VictorSP(0);
 
 
     public void raiseArm()

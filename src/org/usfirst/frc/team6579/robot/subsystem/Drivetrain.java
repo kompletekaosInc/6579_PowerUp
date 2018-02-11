@@ -1,9 +1,6 @@
 package org.usfirst.frc.team6579.robot.subsystem;
 
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
-import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -26,21 +23,26 @@ public class Drivetrain implements SubSystem {
 //    private Toughbox toughbox1 = new Toughbox(0,1);
 //    private Toughbox toughbox2 = new Toughbox(2,3);
 
-    private VictorSP victorPort0 = new VictorSP(0);
-    private VictorSP victorPort1 = new VictorSP(1);
+    //Taken out 8.2.18 Jiah
+//    private VictorSP victorPort0 = new VictorSP(0);
+//    private VictorSP victorPort1 = new VictorSP(1);
+//
+//
+//    private SpeedControllerGroup toughbox1 = new SpeedControllerGroup(victorPort0,victorPort1);
+//
+//    private VictorSP victorPort2 = new VictorSP(2);
+//    private VictorSP victorPort3 = new VictorSP(3);
+//    private SpeedControllerGroup toughbox2 = new SpeedControllerGroup(victorPort2,victorPort3);
+
+    //Now assigning ports with splitter cables to each drivetrain toughbox motor controller group
+    private VictorSP leftToughbox = new VictorSP(8);
+    private VictorSP rightToughbox = new VictorSP(9);
 
 
-    private SpeedControllerGroup toughbox1 = new SpeedControllerGroup(victorPort0,victorPort1);
-
-    private VictorSP victorPort2 = new VictorSP(2);
-    private VictorSP victorPort3 = new VictorSP(3);
-    private SpeedControllerGroup toughbox2 = new SpeedControllerGroup(victorPort2,victorPort3);
-
-
-    //left drive set
-    private SpeedControllerGroup leftToughbox = toughbox1;
-    //right drive set
-    private SpeedControllerGroup rightToughbox = toughbox2;
+//    //left drive set
+//    private SpeedControllerGroup leftToughbox = toughbox1;
+//    //right drive set
+//    private SpeedControllerGroup rightToughbox = toughbox2;
 
     //gyro
     private ADXRS450_Gyro gyro = null;

@@ -45,6 +45,8 @@ public class  Robot extends IterativeRobot {
     private RobotControl robotControl;
     private RobotControl operatorControl;
 
+//  Holds randomized game data from start of the match
+//  private String gameData; - Griff 10 Feb
 
 //	private Timer m_timer = new Timer();
 //
@@ -113,6 +115,10 @@ public class  Robot extends IterativeRobot {
 	public void autonomousInit() {
 //		m_timer.reset();
 //		m_timer.start();
+
+//      Inserts random game data into variable
+//      gameData = DriverStation.getInstance().getGameSpecificMessage(); - Griff 10 Feb
+
 	}
 
 	/**
@@ -135,7 +141,7 @@ public class  Robot extends IterativeRobot {
 	public void teleopInit() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
-        System.out.println("teleopInit: [build=JustinGriff5:24]" + dateFormat.format(date));
+        System.out.println("teleopInit: [build=JustinJiah:21:09]" + dateFormat.format(date));
 //        //Encoder sampleEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
 //
 //

@@ -18,7 +18,7 @@ import org.usfirst.frc.team6579.robot.Robot;
  */
 public class Lift implements SubSystem {
 
-    private VictorSP liftMotor = new VictorSP(6);//should be port nine for testing on 2.2.18 Jiah Pang //changed to port six 3.2.18 Jiah
+    private VictorSP liftMotor = new VictorSP(7);//should be port nine for testing on 2.2.18 Jiah Pang //changed to port 7 8.2.18 Jiah
 
     /**
      * Lifts the mechanism

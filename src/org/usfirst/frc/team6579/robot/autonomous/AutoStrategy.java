@@ -51,7 +51,8 @@ public abstract class AutoStrategy {
 //        }
 //        robot.getDrivetrain().stop();
 //    }
+//
+//    protected void doSwitch(String side) {
 
-
-
+//      } - Griff 10 Feb
 }

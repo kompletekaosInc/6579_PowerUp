@@ -23,13 +23,13 @@ public class Intake implements SubSystem {
 
 
     //Left motor controller group
-    private VictorSP intakeLeft4 = new VictorSP(4);
-    private VictorSP intakeLeft5 = new VictorSP(5);
+    private VictorSP intakeLeft4 = new VictorSP(3);
+    private VictorSP intakeLeft5 = new VictorSP(4);
     private SpeedControllerGroup leftIntakeMotors = new SpeedControllerGroup(intakeLeft4,intakeLeft5);
 
     //Right motor controller group
-    private VictorSP intakeRight8 = new VictorSP(8);
-    private VictorSP intakeRight9 = new VictorSP(9);
+    private VictorSP intakeRight8 = new VictorSP(5);
+    private VictorSP intakeRight9 = new VictorSP(6);
     private SpeedControllerGroup rightIntakeMotors = new SpeedControllerGroup(intakeRight8,intakeRight9);
 
 
