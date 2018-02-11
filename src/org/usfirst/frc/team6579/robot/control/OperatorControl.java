@@ -41,5 +41,20 @@ public class OperatorControl extends JoystickControl {
         robot.getClimber().raiseArm();
     }
 
+    @Override
+    protected void processButton3(Robot robot){
+        robot.getClimber().winchRaise(100);
+    }
+
+    @Override
+    protected void processButton4(Robot robot){
+        robot.getClimber().winchLower(50);
+    }
+
+    @Override
+    protected void processButton5(Robot robot){
+        robot.getClimber().winchRaise(75);
+    }
+
 
 }

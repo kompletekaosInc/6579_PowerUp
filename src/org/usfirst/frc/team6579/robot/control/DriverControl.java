@@ -76,12 +76,12 @@ public class DriverControl extends JoystickControl  {
     protected void processButton2(Robot robot ) {
 
     }
-    protected void processButton3(Robot robot ) {
-        robot.getClimber().lowerArm();
-    }
-    protected void processButton4(Robot robot ) {
-        robot.getClimber().raiseArm();
-    }
+//    protected void processButton3(Robot robot ) {
+//        robot.getClimber().lowerArm();
+//    }
+//    protected void processButton4(Robot robot ) {
+//        robot.getClimber().raiseArm();
+//    }
     protected void processButton5(Robot robot ) {
         robot.getLift().liftDown(100);
     }
