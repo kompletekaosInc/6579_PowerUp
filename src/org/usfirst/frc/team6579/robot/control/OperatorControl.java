@@ -32,13 +32,15 @@ public class OperatorControl extends JoystickControl {
     @Override
     protected void processButton11(Robot robot) {
         System.out.println("in processButton11");
-       robot.getClimber().lowerArm();
+//      robot.getClimber().lowerArm();
+        robot.getClimber().lowerArm25();
     }
 
     @Override
     protected void processButton12(Robot robot) {
         System.out.println("in processButton12");
-        robot.getClimber().raiseArm();
+//      robot.getClimber().raiseArm();
+        robot.getClimber().raiseArm25();
     }
 
     @Override

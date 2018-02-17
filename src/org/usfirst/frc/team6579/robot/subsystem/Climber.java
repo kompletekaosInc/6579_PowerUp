@@ -26,20 +26,15 @@ public class Climber implements SubSystem {
 
     private VictorSP armMotor = new VictorSP(0);
 
+//    public void raiseArm() { armMotor.set(0.7); }
+//
+//    public void lowerArm() { armMotor.set(-0.7); }
 
-    public void raiseArm()
-    {
-        armMotor.set(0.7);
-    }
+    public void raiseArm25() { armMotor.set(0.4); }
 
-    public void lowerArm()
-    {
-        armMotor.set(-0.7);
-    }
+    public void lowerArm25() { armMotor.set(-0.4); }
 
-    public void stopArm() {
-        armMotor.set(0);
-    }
+    public void stopArm() { armMotor.set(0); }
 
     /**
      * This method powers the winch in a positive direction, raising the robot off the ground
