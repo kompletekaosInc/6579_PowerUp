@@ -76,7 +76,7 @@ public class Drivetrain implements SubSystem {
 
         try{
             drivetrainEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
-            SmartDashboard.putBoolean("Encoder installed", true);
+            SmartDashboard.putBoolean("Drivetrain encoder installed", true);
 
             drivetrainEncoder.setMaxPeriod(.1);
             drivetrainEncoder.setMinRate(10);
@@ -88,7 +88,7 @@ public class Drivetrain implements SubSystem {
             drivetrainEncoder.reset();
         } catch (Exception e){
             System.out.println("Encoder not installed correctly" + e.toString());
-            SmartDashboard.putBoolean("Encoder installed", false);
+            SmartDashboard.putBoolean("Drivetrain encoder installed", false);
         }
     }
 

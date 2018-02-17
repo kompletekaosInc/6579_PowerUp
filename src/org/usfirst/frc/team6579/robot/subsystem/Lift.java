@@ -1,7 +1,10 @@
 package org.usfirst.frc.team6579.robot.subsystem;
 
+import edu.wpi.first.wpilibj.CounterBase;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team6579.robot.Robot;
 
 /**
@@ -19,6 +22,23 @@ import org.usfirst.frc.team6579.robot.Robot;
 public class Lift implements SubSystem {
 
     private VictorSP liftMotor = new VictorSP(7);//should be port nine for testing on 2.2.18 Jiah Pang //changed to port 7 8.2.18 Jiah
+
+    private Encoder liftEncoder = null;
+
+    public boolean getLift2 = false;
+
+
+    public Lift(){
+
+        try {
+            liftEncoder = new Encoder(2,3,false,Encoder.EncodingType.k4X);
+            SmartDashboard.putBoolean("Lift encoder installed", true);
+        }
+        catch (Exception e){
+            System.out.println("Encoder not installed correctly" + e.toString());
+            SmartDashboard.putBoolean("Lift encoder installed", false);
+        }
+    }
 
     /**
      * Lifts the mechanism
@@ -42,9 +62,36 @@ public class Lift implements SubSystem {
         liftMotor.set(0);
     }
 
+    public void encoderReset(){
+        liftEncoder.reset();
+    }
+
+    /**
+     * Lifts the lift mechanism for a certain height specified in cm
+     * @param targetDistance
+     */
+    public void lift2(double targetDistance){
+        getLift2 = true;
+        while (getDistance() < targetDistance){
+            liftMotor.set(1);
+        }
+        liftMotor.set(0);
+        getLift2 = false;
+    }
+
+    public boolean isMoving(){
+        return getLift2;
+    }
+
+    public double getDistance(){
+        return liftEncoder.getRaw()*0.027; //lift travels 0.027cm per pulse calculated by practical experiment where lift raised 68cm in 2510 pulses
+    }
+
     @Override
     public void publishStats() {
-
+        SmartDashboard.putNumber("Lift encoder pulses", liftEncoder.getRaw());
+        SmartDashboard.putNumber("Lift encoder distance", liftEncoder.getDistance()); //comparing the encoder's getDistance to our own calculation
+        SmartDashboard.putNumber("Lift distance", getDistance()); //this is the accurate calculation
     }
 
     @Override

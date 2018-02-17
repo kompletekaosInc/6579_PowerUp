@@ -25,8 +25,10 @@ public class OperatorControl extends JoystickControl {
 
     @Override
     protected void processButton9(Robot robot) {
+        robot.getLift().encoderReset();
         //System.out.println("in processButton9");
         //robot.getClimber().stopArm();
+        //not used practically
     }
 
     @Override
@@ -50,7 +52,8 @@ public class OperatorControl extends JoystickControl {
 
     @Override
     protected void processButton4(Robot robot){
-        robot.getClimber().winchLower(50);
+        //robot.getClimber().winchLower(50);
+        robot.getLift().stop(); //added to protect the lift manually in case of accident
     }
 
     @Override
@@ -70,11 +73,13 @@ public class OperatorControl extends JoystickControl {
 
     @Override
     protected void processButton10(Robot robot){
-        robot.getIntake().intakeSuckIn(0.1);
+        //robot.getIntake().intakeSuckIn(0.1);
+        //unused button
+        robot.getLift().lift2(100);
     }
 
     @Override
-    protected void processButton8(Robot robot){
+    protected void processButton8(Robot robot) {
         robot.getLift().liftUp(1);
     }
 
@@ -85,7 +90,10 @@ public class OperatorControl extends JoystickControl {
 
     @Override
     protected void processNoButtons(Robot robot){
-        robot.getLift().stop();
+        //if statement makes sure the lift doesn't stop if lift2 is in use
+        if (!robot.getLift().isMoving()){
+            robot.getLift().stop();
+        }
         robot.getClimber().stopWinch();
         robot.getClimber().stopArm();
         robot.getIntake().stopIntake();
