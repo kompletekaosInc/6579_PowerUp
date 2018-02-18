@@ -95,7 +95,7 @@ public class DriverControl extends JoystickControl  {
     protected void processButton7(Robot robot ) {
         //robot.getIntake().intakeSpitOut(0.5);
         //robot.getIntake().intakeSuckIn(0.05);
-        //robot.getDrivetrain().gyroTurn(90,true);
+        robot.getDrivetrain().gyroTurn(45,true);
 
     }
     protected void processButton8(Robot robot ) {
@@ -106,7 +106,7 @@ public class DriverControl extends JoystickControl  {
     }
     protected void processButton9(Robot robot ) {
         //robot.getIntake().intakeSpitOut(1);
-        //robot.getDrivetrain().driveEncoderGyro(200,0.3);
+        robot.getDrivetrain().driveEncoderGyro(200,0.5);
 
     }
     protected void processButton10(Robot robot ) {
@@ -114,15 +114,18 @@ public class DriverControl extends JoystickControl  {
         //robot.getIntake().intakeSuckIn(0.25);
         //robot.getDrivetrain().resetEncoder();
 
+
     }
     protected void processButton11(Robot robot) {
         //robot.getDrivetrain().driveEncoder(100,0.2);
         //robot.getIntake().intakeSuckIn(0.5);
+        robot.getDrivetrain().setPower(0.4,0.4);
 
     }
     protected void processButton12(Robot robot ) {
         //robot.getDrivetrain().driveEncoder(200,0.2);
         //robot.getIntake().intakeSuckIn(0.75);
+        robot.getDrivetrain().hardStop();
 
 
     }

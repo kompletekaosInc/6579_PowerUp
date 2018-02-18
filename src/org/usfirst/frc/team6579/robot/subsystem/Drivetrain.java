@@ -123,6 +123,12 @@ public class Drivetrain implements SubSystem {
      */
     public void hardStop(){
 
+        // lets get the current gyro angle and encoder value.  We want to return to this spot
+        long encoderPosition = drivetrainEncoder.getRaw();
+        double gyroAtStop = gyro.getAngle();
+
+
+
         logger.info("hardStop: initial (leftToughbox:right) = (" + leftToughbox.get() + ":" + rightToughbox.get() + ")");
         double leftStopPower;
         double rightStopPower;
@@ -141,15 +147,17 @@ public class Drivetrain implements SubSystem {
         else{
             rightStopPower = 0.1;
         }
+//        leftStopPower = leftToughbox.get() * -1.5;
+//        rightStopPower = rightToughbox.get() * -1.5;
 
         long beginTimneHardStop = System.currentTimeMillis();
-        while (System.currentTimeMillis()-beginTimneHardStop < 2000) {
+        while (System.currentTimeMillis()-beginTimneHardStop < 25) {
 
             setPower(leftStopPower, rightStopPower);
-            //logger.fine("hardStop:current (leftToughbox:right) = (" + leftToughbox.get() + ":" + rightToughbox.get() + ")");
+            logger.fine("hardStop:current (leftToughbox:right) = (" + leftToughbox.get() + ":" + rightToughbox.get() + ")");
         }
         stop();
-        logger.info("hardStop:current (leftToughbox:right) = (" + leftToughbox.get() + ":" + rightToughbox.get() + ")");
+        logger.info("hardStop:end (leftToughbox:right) = (" + leftToughbox.get() + ":" + rightToughbox.get() + ")");
         logger.info("hardStop finished");
 
     }
@@ -223,8 +231,8 @@ public class Drivetrain implements SubSystem {
     public void gyroTurn(double targetAngle, boolean left)
     {
         logger.info("gyroTurn [" + targetAngle + ":" + left + "]");
-        double turnPower = 0.3;
-        double slowTurnPower = 0.25;
+        double turnPower = 0.20;
+        double slowTurnPower = 0.18;
 
         SmartDashboard.putNumber("gyroTurn.targetAngle", targetAngle);
         SmartDashboard.putBoolean("gyroTurn.left", left);
@@ -232,7 +240,7 @@ public class Drivetrain implements SubSystem {
         // reset gyro sensor to zero
         gyro.reset();   // do not calibrate as this will stop the world and make the gyro crazy
 
-        while ( Math.abs(getModGyroAngle()) < (Math.abs(targetAngle) - 15))
+        while ( Math.abs(getModGyroAngle()) < (Math.abs(targetAngle)))
         {
             if (left)
             {
@@ -244,21 +252,21 @@ public class Drivetrain implements SubSystem {
                 setPower(-turnPower, turnPower);
             }
         }
+//        stop();
+//        while ( Math.abs(getModGyroAngle()) < (Math.abs(targetAngle)-5)){
+//
+//            if (left)
+//            {
+//                setPower(slowTurnPower, -slowTurnPower);
+//            }
+//            else
+//            {
+//                // must want to turn right
+//                setPower(-slowTurnPower, slowTurnPower);
+//            }
+//        }
+        //hardStop();
         stop();
-        while ( Math.abs(getModGyroAngle()) < (Math.abs(targetAngle)-2)){
-
-            if (left)
-            {
-                setPower(slowTurnPower, -slowTurnPower);
-            }
-            else
-            {
-                // must want to turn right
-                setPower(-slowTurnPower, slowTurnPower);
-            }
-        }
-        hardStop();
-        //stop();
         logger.info("Gyro turn finished");
 
     }
@@ -307,7 +315,7 @@ public class Drivetrain implements SubSystem {
 
     }
 
-    public void driveEncoderGyro(double distance, double power){
+    public void driveStraight(double distance, double power){
         logger.info("driveEncoderGyro [distance:power][" + distance + ":" + power + "]");
         double gyroTarget = getGyroAngle();
 
@@ -318,7 +326,7 @@ public class Drivetrain implements SubSystem {
         resetEncoder();
 
         SmartDashboard.putNumber("Target Pulses", targetPulses);
-        double slowDownTarget = targetPulses*0.2;
+        double slowDownTarget = targetPulses*0.01;
         //double buffer = 0.1*targetPulses;
 
         while (Math.abs(drivetrainEncoder.getRaw())<(targetPulses-slowDownTarget)){
@@ -326,16 +334,25 @@ public class Drivetrain implements SubSystem {
             //setPower(power,power);
             SmartDashboard.putNumber("Encoder distance", drivetrainEncoder.getDistance());
         }
-        stop();
-        while (Math.abs(drivetrainEncoder.getRaw())<targetPulses){
-            followGyro(0.15,gyroTarget);
-        }
-        hardStop();
+
+//        while (Math.abs(drivetrainEncoder.getRaw())<targetPulses){
+//            followGyro(0.15,gyroTarget);
+//        }
+        //hardStop();
+        //stop();
 //        if (drivetrainEncoder.getRaw()>=targetPulses){
 //            hardStop();
 //            //stop();
 //
 //        }
+    }
+
+
+    public void driveEncoderGyro(double distance, double power){
+        logger.info("driveEncoderGyro [distance:power][" + distance + ":" + power + "]");
+        driveStraight(distance-5, power);
+        driveStraight(5, power/2);
+        driveStraight(5, power*-0.85);
     }
 
     public void drivePulses(int pulses){

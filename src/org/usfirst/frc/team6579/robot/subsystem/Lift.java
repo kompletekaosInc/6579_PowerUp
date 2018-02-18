@@ -23,6 +23,7 @@ public class Lift implements SubSystem {
 
     private VictorSP liftMotor = new VictorSP(7);//should be port nine for testing on 2.2.18 Jiah Pang //changed to port 7 8.2.18 Jiah
 
+
     private Encoder liftEncoder = null;
 
     public boolean getLift2 = false;
@@ -71,12 +72,18 @@ public class Lift implements SubSystem {
      * @param targetDistance
      */
     public void lift2(double targetDistance){
+
         getLift2 = true;
-        while (getDistance() < targetDistance){
+        while(getDistance() < targetDistance)
+        {
             liftMotor.set(1);
         }
         liftMotor.set(0);
         getLift2 = false;
+
+
+        //new Thread(worker).start();
+
     }
 
     public boolean isMoving(){
@@ -102,4 +109,17 @@ public class Lift implements SubSystem {
 
         //test limits
     }
+
+
+
+//    private Runnable worker = new Runnable()
+//    {
+//        getLift2 = true;
+//            while(getDistance() < targetDistance)
+//        {
+//            liftMotor.set(1);
+//        }
+//            liftMotor.set(0);
+//        getLift2 = false;
+//    }
 }
