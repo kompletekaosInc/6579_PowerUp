@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="13fa80e3-92fc-497d-95f5-533fc157bb3a" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/Robot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/control/DriverControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/control/DriverControl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/control/OperatorControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/control/OperatorControl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/subsystem/Drivetrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/subsystem/Drivetrain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/subsystem/Lift.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/subsystem/Lift.java" afterDir="false" />
@@ -16,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Drivetrain.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/subsystem/Drivetrain.java">
+      <file leaf-file-name="Robot.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/Robot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="257" column="43" selection-start-line="257" selection-start-column="43" selection-end-line="257" selection-end-column="43" />
+            <state relative-caret-position="228">
+              <caret line="82" selection-start-line="82" selection-end-line="82" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -28,11 +30,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DriverControl.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Drivetrain.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/subsystem/Drivetrain.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="182">
+              <caret line="217" column="30" selection-start-line="217" selection-start-column="30" selection-end-line="217" selection-end-column="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#8270#8271#0" expanded="true" />
+                <element signature="e#8311#8312#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DriverControl.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/control/DriverControl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1177">
-              <caret line="80" column="48" selection-start-line="80" selection-start-column="48" selection-end-line="80" selection-end-column="48" />
+            <state relative-caret-position="575">
+              <caret line="108" column="54" selection-start-line="108" selection-start-column="54" selection-end-line="108" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#595#596#0" expanded="true" />
@@ -60,33 +76,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OperatorControl.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="OperatorControl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/control/OperatorControl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="55" column="88" selection-start-line="55" selection-start-column="88" selection-end-line="55" selection-end-column="88" />
+            <state relative-caret-position="283">
+              <caret line="69" column="13" selection-start-line="69" selection-start-column="13" selection-end-line="69" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1468#1469#0" expanded="true" />
-                <element signature="e#1488#1489#0" expanded="true" />
-                <element signature="e#1581#1582#0" expanded="true" />
-                <element signature="e#1631#1632#0" expanded="true" />
                 <element signature="e#2009#2010#0" expanded="true" />
                 <element signature="e#2050#2051#0" expanded="true" />
                 <element signature="e#2112#2113#0" expanded="true" />
                 <element signature="e#2155#2156#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JoystickControl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/control/JoystickControl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1140">
-              <caret line="76" column="5" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -137,7 +137,7 @@
       <file leaf-file-name="Lift.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/subsystem/Lift.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="691">
+            <state relative-caret-position="1395">
               <caret line="93" column="100" selection-start-line="93" selection-start-column="100" selection-end-line="93" selection-end-column="100" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -180,12 +180,12 @@
         <option value="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/control/JoystickControl.java" />
         <option value="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/subsystem/Intake.java" />
         <option value="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/autonomous/AutoStrategy.java" />
-        <option value="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/Robot.java" />
-        <option value="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/control/DriverControl.java" />
         <option value="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/subsystem/Climber.java" />
-        <option value="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/subsystem/Drivetrain.java" />
         <option value="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/subsystem/Lift.java" />
         <option value="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/control/OperatorControl.java" />
+        <option value="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/Robot.java" />
+        <option value="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/subsystem/Drivetrain.java" />
+        <option value="$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/control/DriverControl.java" />
       </list>
     </option>
   </component>
@@ -261,7 +261,7 @@
               <item name="frc" type="462c0819:PsiDirectoryNode" />
               <item name="team6579" type="462c0819:PsiDirectoryNode" />
               <item name="robot" type="462c0819:PsiDirectoryNode" />
-              <item name="autonomous" type="462c0819:PsiDirectoryNode" />
+              <item name="control" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="6579_PowerUp" type="b2602c69:ProjectViewProjectNode" />
@@ -288,6 +288,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
@@ -392,7 +393,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="29" y="23" width="2490" height="1289" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32998326" />
@@ -520,10 +520,6 @@
           <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1468#1469#0" expanded="true" />
-            <element signature="e#1488#1489#0" expanded="true" />
-            <element signature="e#1581#1582#0" expanded="true" />
-            <element signature="e#1631#1632#0" expanded="true" />
             <element signature="e#2009#2010#0" expanded="true" />
             <element signature="e#2050#2051#0" expanded="true" />
             <element signature="e#2112#2113#0" expanded="true" />
@@ -612,6 +608,8 @@
           <caret line="37" column="50" selection-start-line="37" selection-start-column="50" selection-end-line="37" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#8270#8271#0" expanded="true" />
+            <element signature="e#8311#8312#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -659,6 +657,8 @@
           <caret line="37" column="50" selection-start-line="37" selection-start-column="50" selection-end-line="37" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#8270#8271#0" expanded="true" />
+            <element signature="e#8311#8312#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -815,6 +815,8 @@
           <caret line="53" column="42" selection-start-line="53" selection-start-column="42" selection-end-line="53" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#8270#8271#0" expanded="true" />
+            <element signature="e#8311#8312#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -868,16 +870,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/Robot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="121" selection-start-line="121" selection-end-line="121" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/control/JoystickControl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1140">
@@ -914,32 +906,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/control/DriverControl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1177">
-          <caret line="80" column="48" selection-start-line="80" selection-start-column="48" selection-end-line="80" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#595#596#0" expanded="true" />
-            <element signature="e#619#620#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/subsystem/Intake.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="431">
           <caret line="31" column="50" selection-start-line="31" selection-start-column="50" selection-end-line="31" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/subsystem/Drivetrain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="257" column="43" selection-start-line="257" selection-start-column="43" selection-end-line="257" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -962,7 +932,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/subsystem/Lift.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="691">
+        <state relative-caret-position="1395">
           <caret line="93" column="100" selection-start-line="93" selection-start-column="100" selection-end-line="93" selection-end-column="100" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -982,18 +952,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/control/OperatorControl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="55" column="88" selection-start-line="55" selection-start-column="88" selection-end-line="55" selection-end-column="88" />
+        <state relative-caret-position="283">
+          <caret line="69" column="13" selection-start-line="69" selection-start-column="13" selection-end-line="69" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1468#1469#0" expanded="true" />
-            <element signature="e#1488#1489#0" expanded="true" />
-            <element signature="e#1581#1582#0" expanded="true" />
-            <element signature="e#1631#1632#0" expanded="true" />
             <element signature="e#2009#2010#0" expanded="true" />
             <element signature="e#2050#2051#0" expanded="true" />
             <element signature="e#2112#2113#0" expanded="true" />
             <element signature="e#2155#2156#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/Robot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="82" selection-start-line="82" selection-end-line="82" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/subsystem/Drivetrain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="217" column="30" selection-start-line="217" selection-start-column="30" selection-end-line="217" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#8270#8271#0" expanded="true" />
+            <element signature="e#8311#8312#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/usfirst/frc/team6579/robot/control/DriverControl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="108" column="54" selection-start-line="108" selection-start-column="54" selection-end-line="108" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#595#596#0" expanded="true" />
+            <element signature="e#619#620#0" expanded="true" />
           </folding>
         </state>
       </provider>

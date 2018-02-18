@@ -35,8 +35,8 @@ public class Drivetrain implements SubSystem {
 //    private SpeedControllerGroup toughbox2 = new SpeedControllerGroup(victorPort2,victorPort3);
 
     //Now assigning ports with splitter cables to each drivetrain toughbox motor controller group
-    private VictorSP leftToughbox = new VictorSP(8);
-    private VictorSP rightToughbox = new VictorSP(9);
+    private Spark leftToughbox = new Spark(8);
+    private Spark rightToughbox = new Spark(9);
 
 
 //    //left drive set
@@ -53,7 +53,8 @@ public class Drivetrain implements SubSystem {
     //defining the drivetrain type
     private DifferentialDrive robotDrive = new DifferentialDrive(leftToughbox,rightToughbox);
 
-    double distancePerPulse = 0.2493639169;
+    private double distancePerPulse = 0.2493639169;
+    public boolean inMotion = false;
 
     /**
      * Declaration of class, tries for gyro and sets the gear side as the default front of robot
@@ -75,12 +76,12 @@ public class Drivetrain implements SubSystem {
         }
 
         try{
-            drivetrainEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
+            drivetrainEncoder = new Encoder(0, 1, true, Encoder.EncodingType.k4X);
             SmartDashboard.putBoolean("Drivetrain encoder installed", true);
 
             drivetrainEncoder.setMaxPeriod(.1);
             drivetrainEncoder.setMinRate(10);
-            drivetrainEncoder.setDistancePerPulse(0.079375);
+            drivetrainEncoder.setDistancePerPulse(0.2493639169);
             drivetrainEncoder.setReverseDirection(true);
             drivetrainEncoder.setSamplesToAverage(7);
 
@@ -109,6 +110,7 @@ public class Drivetrain implements SubSystem {
      * This does NOT make the robot do a hard stop unless brake is set on the motor controllers
      */
     public void stop(){
+
         setPower(0,0);
     }
 
@@ -116,34 +118,40 @@ public class Drivetrain implements SubSystem {
      * This method makes the robot stop on the spot.
      */
     public void hardStop(){
-        double leftStopPower = 0.1;
-        double rightStopPower = 0.1;
+        System.out.println("hardStop start");
+        double leftStopPower;
+        double rightStopPower;
 
         if (leftToughbox.get()>0){
-            leftStopPower = -0.1;
+            leftStopPower = -0.15;
 
         }
         else{
-            leftStopPower = 0.1;
+            leftStopPower = 0.15;
         }
 
         if (rightToughbox.get() > 0){
-            rightStopPower = -0.1;
+            rightStopPower = -0.15;
         }
         else{
-            rightStopPower = 0.1;
+            rightStopPower = 0.15;
         }
         //SmartDashboard.putNumber("leftStopPower",leftStopPower);
         //SmartDashboard.putNumber("rightStopPower",rightStopPower);
-        setPower(leftStopPower,rightStopPower);
 
+        long beginTimneHardStop = System.currentTimeMillis();
+        while (System.currentTimeMillis()-beginTimneHardStop < 500) {
+            setPower(leftStopPower, rightStopPower);
+        }
+        stop();
+        System.out.println("hardStop finished");
     }
 
     /**
      * Gets the current gyro angle
      */
     public double getGyroAngle(){
-        publishStats();
+        //publishStats();
         double gyroAngle = 0;
 
         //error handling for if there is no gyro
@@ -167,7 +175,13 @@ public class Drivetrain implements SubSystem {
     /**
      * resets the gyro
      */
-    public void resetGyro(){gyro.reset();}
+    public void resetGyro(){
+        try {
+            gyro.reset();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Follows an angle off the gyro at a driver defined speed
@@ -187,8 +201,8 @@ public class Drivetrain implements SubSystem {
         gyroPowerAdjustment = currentGyroAngle - (gyroTarget % 360);
         gyroPowerAdjustment = gyroPowerAdjustment * gyroGain;
 
-        double gyroMotorPowerLeft = power - gyroPowerAdjustment;
-        double gyroMotorPowerRight = -power - gyroPowerAdjustment; //ToDo: Make adjustment to remove the - from in front when changing to setPower
+        double gyroMotorPowerLeft = -power - gyroPowerAdjustment;
+        double gyroMotorPowerRight = power - gyroPowerAdjustment; //ToDo: Make adjustment to remove the - from in front when changing to setPower
 
         //Makes the motors move
         leftToughbox.set(gyroMotorPowerLeft);
@@ -201,7 +215,8 @@ public class Drivetrain implements SubSystem {
      */
     public void gyroTurn(double targetAngle, boolean left)
     {
-        double turnPower = 0.25;
+        double turnPower = 0.3;
+        double slowTurnPower = 0.20;
 
         SmartDashboard.putNumber("gyroTurn.targetAngle", targetAngle);
         SmartDashboard.putBoolean("gyroTurn.left", left);
@@ -209,20 +224,34 @@ public class Drivetrain implements SubSystem {
         // reset gyro sensor to zero
         gyro.reset();   // do not calibrate as this will stop the world and make the gyro crazy
 
-        while ( Math.abs(getModGyroAngle()) < Math.abs(targetAngle))
+        while ( Math.abs(getModGyroAngle()) < (Math.abs(targetAngle) - 15))
         {
             if (left)
             {
-                setPower(-turnPower, turnPower);
+                setPower(turnPower, -turnPower);
             }
             else
             {
                 // must want to turn right
-                setPower(turnPower, -turnPower);
+                setPower(-turnPower, turnPower);
+            }
+        }
+        stop();
+        while ( Math.abs(getModGyroAngle()) < (Math.abs(targetAngle)-2)){
+
+            if (left)
+            {
+                setPower(slowTurnPower, -slowTurnPower);
+            }
+            else
+            {
+                // must want to turn right
+                setPower(-slowTurnPower, slowTurnPower);
             }
         }
         hardStop();
-        stop();
+        //stop();
+        System.out.println("Gyro turn finished");
 
     }
 
@@ -257,15 +286,42 @@ public class Drivetrain implements SubSystem {
 
         //double buffer = 0.1*targetPulses;
 
-        while (drivetrainEncoder.getRaw()<targetPulses){
+        while (Math.abs(drivetrainEncoder.getRaw())<targetPulses){
             setPower(power,power);
             SmartDashboard.putNumber("Encoder distance", drivetrainEncoder.getDistance());
         }
         if (drivetrainEncoder.getRaw()>=targetPulses){
             hardStop();
-
+            //stop();
         }
 
+    }
+
+    public void driveEncoderGyro(double distance, double power){
+        double gyroTarget = getGyroAngle();
+
+        double targetPulses;
+
+        targetPulses = (distance / distancePerPulse);
+        SmartDashboard.putNumber("Target Pulses", targetPulses);
+        double slowDownTarget = targetPulses*0.2;
+        //double buffer = 0.1*targetPulses;
+
+        while (Math.abs(drivetrainEncoder.getRaw())<(targetPulses-slowDownTarget)){
+            followGyro(power,gyroTarget);
+            //setPower(power,power);
+            SmartDashboard.putNumber("Encoder distance", drivetrainEncoder.getDistance());
+        }
+        stop();
+        while (Math.abs(drivetrainEncoder.getRaw())<targetPulses){
+            followGyro(0.2,gyroTarget);
+        }
+        hardStop();
+//        if (drivetrainEncoder.getRaw()>=targetPulses){
+//            hardStop();
+//            //stop();
+//
+//        }
     }
 
     public void drivePulses(int pulses){
@@ -282,8 +338,14 @@ public class Drivetrain implements SubSystem {
 
     @Override
     public void publishStats(){
-        SmartDashboard.putNumber("Encoder Distance", drivetrainEncoder.getDistance());
-        SmartDashboard.putNumber("Encoder Pulses", drivetrainEncoder.getRaw());
+        SmartDashboard.putNumber("Drivetrain: Encoder Distance", drivetrainEncoder.getDistance());
+        SmartDashboard.putNumber("Drivetrain: Encoder RAW Pulses", drivetrainEncoder.getRaw());
+        SmartDashboard.putNumber("Drivetrain: Encoder Pulses", drivetrainEncoder.get());
+        SmartDashboard.putNumber("Drivetrain: Absolute Value Encoder", Math.abs(drivetrainEncoder.getRaw()));
+        SmartDashboard.putNumber("Drivetrain: gyro ",getGyroAngle());
+        SmartDashboard.putNumber("Drivetrain Left Toughbox power",leftToughbox.get());
+        SmartDashboard.putNumber("Drivetrain Right Toughbox power", rightToughbox.get());
+
     }
 
     @Override

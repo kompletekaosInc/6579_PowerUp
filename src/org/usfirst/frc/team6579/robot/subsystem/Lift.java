@@ -62,7 +62,7 @@ public class Lift implements SubSystem {
         liftMotor.set(0);
     }
 
-    public void encoderReset(){
+    public void resetEncoder(){
         liftEncoder.reset();
     }
 

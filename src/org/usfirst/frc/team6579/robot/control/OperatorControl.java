@@ -1,10 +1,6 @@
 package org.usfirst.frc.team6579.robot.control;
 
-import edu.wpi.first.wpilibj.Joystick;
 import org.usfirst.frc.team6579.robot.Robot;
-import org.usfirst.frc.team6579.robot.subsystem.Climber;
-import org.usfirst.frc.team6579.robot.subsystem.Intake;
-import org.usfirst.frc.team6579.robot.subsystem.Lift;
 
 
 /**
@@ -25,7 +21,7 @@ public class OperatorControl extends JoystickControl {
 
     @Override
     protected void processButton9(Robot robot) {
-        robot.getLift().encoderReset();
+        robot.getLift().resetEncoder();
         //System.out.println("in processButton9");
         //robot.getClimber().stopArm();
         //not used practically
@@ -63,12 +59,12 @@ public class OperatorControl extends JoystickControl {
 
     @Override
     protected void processButton1(Robot robot){
-        robot.getIntake().intakeSuckIn(1);
+        //robot.getIntake().intakeSuckIn(1);
     }
 
     @Override
     protected void processButton2(Robot robot) {
-        robot.getIntake().intakeSpitOut(1);
+        //robot.getIntake().intakeSpitOut(1);
     }
 
     @Override
@@ -96,7 +92,7 @@ public class OperatorControl extends JoystickControl {
         }
         robot.getClimber().stopWinch();
         robot.getClimber().stopArm();
-        robot.getIntake().stopIntake();
+        //robot.getIntake().stopIntake();
     }
 
 }

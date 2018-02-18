@@ -8,7 +8,6 @@
 package org.usfirst.frc.team6579.robot;
 
 import edu.wpi.first.wpilibj.*;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team6579.robot.control.DriverControl;
 import org.usfirst.frc.team6579.robot.control.OperatorControl;
@@ -63,6 +62,10 @@ public class  Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        System.out.println("robotInit: [build=Jiah:Last day 12noon]" + dateFormat.format(date));
+
         try {
             // manage the collection of SubSystems
             drivetrain = new Drivetrain();
@@ -113,6 +116,7 @@ public class  Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
+	    resetSensors();
 //		m_timer.reset();
 //		m_timer.start();
 
@@ -139,6 +143,8 @@ public class  Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopInit() {
+        resetSensors();
+
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
         System.out.println("teleopInit: [build=JustinJiah:21:09]" + dateFormat.format(date));
@@ -146,9 +152,21 @@ public class  Robot extends IterativeRobot {
 //
 //
 //        sampleEncoder.reset();
+
+        resetSensors();
 	}
 
-	/**
+    private void resetSensors() {
+        try {
+            drivetrain.resetGyro();
+            drivetrain.resetEncoder();
+            lift.resetEncoder();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
 	 * This function is called periodically during teleoperated mode.
 	 */
 	@Override
