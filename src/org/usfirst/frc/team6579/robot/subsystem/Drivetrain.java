@@ -119,31 +119,35 @@ public class Drivetrain implements SubSystem {
      */
     public void hardStop(){
         System.out.println("hardStop start");
+        System.out.println("hardStop: initial (leftToughbox:right) = (" + leftToughbox.get() + ":" + rightToughbox.get() + ")");
         double leftStopPower;
         double rightStopPower;
 
         if (leftToughbox.get()>0){
-            leftStopPower = -0.15;
+            leftStopPower = -0.1;
 
         }
         else{
-            leftStopPower = 0.15;
+            leftStopPower = 0.1;
         }
 
         if (rightToughbox.get() > 0){
-            rightStopPower = -0.15;
+            rightStopPower = -0.1;
         }
         else{
-            rightStopPower = 0.15;
+            rightStopPower = 0.1;
         }
         //SmartDashboard.putNumber("leftStopPower",leftStopPower);
         //SmartDashboard.putNumber("rightStopPower",rightStopPower);
 
         long beginTimneHardStop = System.currentTimeMillis();
-        while (System.currentTimeMillis()-beginTimneHardStop < 500) {
+        while (System.currentTimeMillis()-beginTimneHardStop < 2000) {
+
             setPower(leftStopPower, rightStopPower);
+            System.out.println("hardStop:current (leftToughbox:right) = (" + leftToughbox.get() + ":" + rightToughbox.get() + ")");
         }
         stop();
+        System.out.println("hardStop:current (leftToughbox:right) = (" + leftToughbox.get() + ":" + rightToughbox.get() + ")");
         System.out.println("hardStop finished");
     }
 
@@ -314,7 +318,7 @@ public class Drivetrain implements SubSystem {
         }
         stop();
         while (Math.abs(drivetrainEncoder.getRaw())<targetPulses){
-            followGyro(0.2,gyroTarget);
+            followGyro(0.15,gyroTarget);
         }
         hardStop();
 //        if (drivetrainEncoder.getRaw()>=targetPulses){
