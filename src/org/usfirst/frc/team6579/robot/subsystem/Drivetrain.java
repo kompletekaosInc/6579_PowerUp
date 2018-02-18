@@ -292,6 +292,8 @@ public class Drivetrain implements SubSystem {
         targetPulses = (distance / distancePerPulse);
         SmartDashboard.putNumber("Target Pulses", targetPulses);
 
+        resetEncoder();
+
         //double buffer = 0.1*targetPulses;
 
         while (Math.abs(drivetrainEncoder.getRaw())<targetPulses){
@@ -310,8 +312,11 @@ public class Drivetrain implements SubSystem {
         double gyroTarget = getGyroAngle();
 
         double targetPulses;
-
         targetPulses = (distance / distancePerPulse);
+
+        // reset encoder so we can measure till we get to the target distance
+        resetEncoder();
+
         SmartDashboard.putNumber("Target Pulses", targetPulses);
         double slowDownTarget = targetPulses*0.2;
         //double buffer = 0.1*targetPulses;
