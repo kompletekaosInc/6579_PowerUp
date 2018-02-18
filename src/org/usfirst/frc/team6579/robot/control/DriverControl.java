@@ -62,7 +62,7 @@ public class DriverControl extends JoystickControl  {
     public void giveCommands(Robot robot) {
         super.giveCommands(robot);
 
-        //arcadeDrive(robot.getDrivetrain());
+        arcadeDrive(robot.getDrivetrain());
 
     }
 
@@ -86,7 +86,7 @@ public class DriverControl extends JoystickControl  {
 //    }
     protected void processButton5(Robot robot ) {
         //robot.getLift().liftDown(100);
-        robot.getDrivetrain().hardStop();
+        //robot.getDrivetrain().hardStop();
     }
     protected void processButton6(Robot robot ) {
         //robot.getLift().liftUp(100);
@@ -95,33 +95,33 @@ public class DriverControl extends JoystickControl  {
     protected void processButton7(Robot robot ) {
         //robot.getIntake().intakeSpitOut(0.5);
         //robot.getIntake().intakeSuckIn(0.05);
-        robot.getDrivetrain().gyroTurn(90,true);
+        //robot.getDrivetrain().gyroTurn(90,true);
 
     }
     protected void processButton8(Robot robot ) {
 
         //robot.getIntake().intakeSuckIn(1);
-        robot.getDrivetrain().setPower(0,0);
+        //robot.getDrivetrain().setPower(0,0);
 
     }
     protected void processButton9(Robot robot ) {
         //robot.getIntake().intakeSpitOut(1);
-        robot.getDrivetrain().driveEncoderGyro(200,0.3);
+        //robot.getDrivetrain().driveEncoderGyro(200,0.3);
 
     }
     protected void processButton10(Robot robot ) {
         //robot.getDrivetrain().drivePulses(192);
         //robot.getIntake().intakeSuckIn(0.25);
-        robot.getDrivetrain().resetEncoder();
+        //robot.getDrivetrain().resetEncoder();
 
     }
     protected void processButton11(Robot robot) {
-        robot.getDrivetrain().driveEncoder(100,0.2);
+        //robot.getDrivetrain().driveEncoder(100,0.2);
         //robot.getIntake().intakeSuckIn(0.5);
 
     }
     protected void processButton12(Robot robot ) {
-        robot.getDrivetrain().driveEncoder(200,0.2);
+        //robot.getDrivetrain().driveEncoder(200,0.2);
         //robot.getIntake().intakeSuckIn(0.75);
 
 

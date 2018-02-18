@@ -4,6 +4,8 @@ import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import java.util.logging.Logger;
+
 /**
  * This class is responsible for the drivetrain of the robot
  *
@@ -18,6 +20,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * Created by Jiah Pang on 28/01.2018
  */
 public class Drivetrain implements SubSystem {
+
+    private Logger logger = Logger.getLogger( this.getClass().getName());
 
 //    //Define drivetrain toughbox minis
 //    private Toughbox toughbox1 = new Toughbox(0,1);
@@ -71,7 +75,7 @@ public class Drivetrain implements SubSystem {
         }
         catch (Exception e)
         {
-            System.out.println("Gyro not installed correctly" + e.toString());
+            logger.info("Gyro not installed correctly" + e.toString());
             SmartDashboard.putBoolean("Gyro Installed", false);
         }
 
@@ -118,7 +122,7 @@ public class Drivetrain implements SubSystem {
      * This method makes the robot stop on the spot.
      */
     public void hardStop(){
-        System.out.println("hardStop start");
+        logger.info("hardStop start");
         double leftStopPower;
         double rightStopPower;
 
@@ -139,12 +143,12 @@ public class Drivetrain implements SubSystem {
         //SmartDashboard.putNumber("leftStopPower",leftStopPower);
         //SmartDashboard.putNumber("rightStopPower",rightStopPower);
 
-        long beginTimneHardStop = System.currentTimeMillis();
-        while (System.currentTimeMillis()-beginTimneHardStop < 500) {
-            setPower(leftStopPower, rightStopPower);
-        }
+//        long beginTimneHardStop = System.currentTimeMillis();
+//        while (System.currentTimeMillis()-beginTimneHardStop < 500) {
+//            setPower(leftStopPower, rightStopPower);
+//        }
         stop();
-        System.out.println("hardStop finished");
+        logger.info("hardStop finished");
     }
 
     /**
@@ -215,8 +219,9 @@ public class Drivetrain implements SubSystem {
      */
     public void gyroTurn(double targetAngle, boolean left)
     {
+        logger.info("gyroTurn [" + targetAngle + ":" + left + "]");
         double turnPower = 0.3;
-        double slowTurnPower = 0.20;
+        double slowTurnPower = 0.25;
 
         SmartDashboard.putNumber("gyroTurn.targetAngle", targetAngle);
         SmartDashboard.putBoolean("gyroTurn.left", left);
@@ -251,7 +256,7 @@ public class Drivetrain implements SubSystem {
         }
         hardStop();
         //stop();
-        System.out.println("Gyro turn finished");
+        logger.info("Gyro turn finished");
 
     }
 
@@ -298,6 +303,7 @@ public class Drivetrain implements SubSystem {
     }
 
     public void driveEncoderGyro(double distance, double power){
+        logger.info("driveEncoderGyro [distance:power][" + distance + ":" + power + "]");
         double gyroTarget = getGyroAngle();
 
         double targetPulses;

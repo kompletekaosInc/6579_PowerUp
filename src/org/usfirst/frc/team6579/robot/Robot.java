@@ -8,7 +8,11 @@
 package org.usfirst.frc.team6579.robot;
 
 import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc.team6579.robot.autonomous.AutoStrategy;
+import org.usfirst.frc.team6579.robot.autonomous.LeftSideAuto;
+import org.usfirst.frc.team6579.robot.autonomous.MiddleSpotAuto;
 import org.usfirst.frc.team6579.robot.control.DriverControl;
 import org.usfirst.frc.team6579.robot.control.OperatorControl;
 import org.usfirst.frc.team6579.robot.control.RobotControl;
@@ -53,7 +57,20 @@ public class  Robot extends IterativeRobot {
 //
 //    PowerDistributionPanel pdp = new PowerDistributionPanel();
 
+    private AutoStrategy autoStrategy;
+    private SendableChooser autoChooser;
 
+
+
+    private void populateAutoSelector(){
+        autoChooser = new SendableChooser();
+
+        autoChooser.addDefault("Middle auto", new MiddleSpotAuto());
+
+        autoChooser.addObject("Left Spot", new LeftSideAuto());
+
+        SmartDashboard.putData("Auto code selector",autoChooser);
+    }
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -65,6 +82,8 @@ public class  Robot extends IterativeRobot {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
         System.out.println("robotInit: [build=Jiah:Last day 12noon]" + dateFormat.format(date));
+
+        populateAutoSelector();
 
         try {
             // manage the collection of SubSystems
@@ -117,6 +136,8 @@ public class  Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 	    resetSensors();
+	    autoStrategy = (AutoStrategy) autoChooser.getSelected();
+	    autoStrategy.start(this);
 //		m_timer.reset();
 //		m_timer.start();
 
@@ -136,6 +157,7 @@ public class  Robot extends IterativeRobot {
 //		} else {
 //			m_robotDrive.stopMotor(); // stop robot
 //		}
+        publishSubSystemStats();
 	}
 
 	/**
@@ -154,6 +176,7 @@ public class  Robot extends IterativeRobot {
 //        sampleEncoder.reset();
 
         resetSensors();
+
 	}
 
     private void resetSensors() {
