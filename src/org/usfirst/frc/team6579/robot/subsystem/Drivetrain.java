@@ -1,5 +1,6 @@
 package org.usfirst.frc.team6579.robot.subsystem;
 
+import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -54,6 +55,8 @@ public class Drivetrain implements SubSystem {
     //encoder
     private Encoder drivetrainEncoder = null;
 
+    private UsbCamera camera = null;  // it will remain null if we have no camera plugged into the USB ports
+
     //defining the drivetrain type
     private DifferentialDrive robotDrive = new DifferentialDrive(leftToughbox,rightToughbox);
 
@@ -64,6 +67,13 @@ public class Drivetrain implements SubSystem {
      * Declaration of class, tries for gyro and sets the gear side as the default front of robot
      */
     public Drivetrain() {
+
+        try {
+            camera = CameraServer.getInstance().startAutomaticCapture();
+        } catch (Exception e) {
+            logger.info("Camera not installed correctly" + e.toString());
+            SmartDashboard.putBoolean("Camera Installed", false);
+        }
 
         try {
             gyro = new ADXRS450_Gyro();
@@ -231,8 +241,8 @@ public class Drivetrain implements SubSystem {
     public void gyroTurn(double targetAngle, boolean left)
     {
         logger.info("gyroTurn [" + targetAngle + ":" + left + "]");
-        double turnPower = 0.20;
-        double slowTurnPower = 0.18;
+        double turnPower = 0.3;
+        double slowTurnPower = 0.25;
 
         SmartDashboard.putNumber("gyroTurn.targetAngle", targetAngle);
         SmartDashboard.putBoolean("gyroTurn.left", left);
@@ -265,8 +275,8 @@ public class Drivetrain implements SubSystem {
 //                setPower(-slowTurnPower, slowTurnPower);
 //            }
 //        }
-        //hardStop();
-        stop();
+        hardStop();
+
         logger.info("Gyro turn finished");
 
     }
@@ -350,9 +360,10 @@ public class Drivetrain implements SubSystem {
 
     public void driveEncoderGyro(double distance, double power){
         logger.info("driveEncoderGyro [distance:power][" + distance + ":" + power + "]");
-        driveStraight(distance-5, power);
-        driveStraight(5, power/2);
-        driveStraight(5, power*-0.85);
+        driveStraight(distance-10, power);
+        driveStraight(10, power/2);
+
+        hardStop();
     }
 
     public void drivePulses(int pulses){

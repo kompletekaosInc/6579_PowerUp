@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team6579.robot.autonomous.AutoStrategy;
 import org.usfirst.frc.team6579.robot.autonomous.LeftSideAuto;
 import org.usfirst.frc.team6579.robot.autonomous.MiddleSpotAuto;
+import org.usfirst.frc.team6579.robot.autonomous.RightSideAuto;
 import org.usfirst.frc.team6579.robot.control.DriverControl;
 import org.usfirst.frc.team6579.robot.control.OperatorControl;
 import org.usfirst.frc.team6579.robot.control.RobotControl;
@@ -68,6 +69,8 @@ public class  Robot extends IterativeRobot {
         autoChooser.addDefault("Middle auto", new MiddleSpotAuto());
 
         autoChooser.addObject("Left Spot", new LeftSideAuto());
+
+        autoChooser.addObject("Right Spot", new RightSideAuto());
 
         SmartDashboard.putData("Auto code selector",autoChooser);
     }

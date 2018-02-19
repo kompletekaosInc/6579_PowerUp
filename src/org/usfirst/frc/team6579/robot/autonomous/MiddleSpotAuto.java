@@ -14,85 +14,31 @@ public class MiddleSpotAuto extends AutoStrategy {
     public void doStrategy(Robot robot) {
 
         logger.info("Starting MiddleSpotAuto strategy");
-        //get switch
-        //isSwitchLeft();
 
-        //drive forwards 1m
-
-        //robot.getDrivetrain().driveEncoderGyro(15,0.5);
-        //robot.getDrivetrain().stop();
-        //sleep(1000);
-        //robot.getLift().lift2(10);
-        robot.getDrivetrain().setPower(0.4,0.4);
-        sleep(500);
-        robot.getDrivetrain().setPower(-0.2,0.2);
-        sleep(200);
-        robot.getDrivetrain().stop();
+        robot.getDrivetrain().driveEncoderGyro(15, 0.5);
         sleep(750);
-
         robot.getIntake().intakeSuckIn(0.15);
+        robot.getDrivetrain().driveEncoderGyro(40, 0.45);
+        robot.getDrivetrain().hardStop();
 
-        robot.getDrivetrain().driveEncoderGyro(60,0.4);
+        robot.getLift().lift2(100);
+        robot.getDrivetrain().gyroTurn(50, isSwitchLeft()); // if isSwitchLeft() is true, turn left; if false, turn right
+        robot.getDrivetrain().driveEncoderGyro(150, 0.45);
+        robot.getDrivetrain().gyroTurn(50, !isSwitchLeft()); // if isSwitchLeft() is true, turn right; if false, turn left
 
-        logger.info("moved forward, start raising lift");
-        robot.getLift().lift2(80);
-        logger.info("lift up");
+//        robot.getDrivetrain().setPower(0.5, 0.5);
+//        sleep(2000);
 
-        //sleep(1000);
-        //turn 45 degrees to the side with the switch
+        long beginTimneHardStop = System.currentTimeMillis();
+        while (System.currentTimeMillis()-beginTimneHardStop < 1000) {
 
-        if (isSwitchLeft()==true){
-            logger.info("Switch is LEFT turning left");
-            robot.getDrivetrain().gyroTurn(50,true);
-            logger.info("turn done. go forward a bit");
-            //sleep(1000);
-            robot.getDrivetrain().driveEncoderGyro(150,0.4);//ToDo: find good power that works
-            logger.info("to back to the right");
-
-            //sleep( 1000);
-            robot.getDrivetrain().gyroTurn(50,false);
-
+            robot.getDrivetrain().setPower(0.5,0.5);
         }
-        else{
-            logger.info("Switch is RIGHT! turning right");
-            robot.getDrivetrain().gyroTurn(50,false);
-            logger.info("turn done. go forward a bit");
-            robot.getDrivetrain().driveEncoderGyro(150,0.4);//ToDo: find good power that works
-            logger.info("to back to the left");
-            robot.getDrivetrain().gyroTurn(50,true);
-
-        }
-
-        //robot.getLift().lift2(100);
-
-        //sleep(1000);
-        logger.info("Should be facing swith, drive forward a bit");
-        // drive into the wall slowly for a few seconds
-        //robot.getDrivetrain().driveEncoderGyro(20,0.25);
-        robot.getDrivetrain().setPower(0.5,0.5);
-        sleep(1500);
-
-        logger.info("Deliver cube");
-        // shoot for 1 second
 
         robot.getIntake().intakeSpitOut(1);
         sleep(1000);
         robot.getIntake().stopIntake();
         robot.getDrivetrain().stop();
-
-        //move forwards towards the switch side
-
-        //turn another 45 degrees to square up with the side of the switch
-
-        //raise lift 1m
-
-        //move forwards to the switch
-
-        //stop
-
-        //release the cube from the lift/intake
-
-        //end the strategy
 
         System.out.println("Ended MiddleSpotAuto");
 
