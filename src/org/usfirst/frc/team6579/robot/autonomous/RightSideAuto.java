@@ -16,22 +16,22 @@ public class RightSideAuto extends AutoStrategy {
 
         //Assuming robot is lined up with very far corner of base plate
 
-        if (isSwitchLeft()==false){
-            logger.info("Switch is to the right");
-            robot.getDrivetrain().driveEncoderGyro(360,40);//drives to side of switch //ToDo: find good power that works
+        if (!isScaleLeft()) {
+            logger.info("Switch is to the left and scale is to the right");
+            robot.getDrivetrain().driveEncoderGyro(360,0.40);//drives to side of switch //ToDo: find good power that works
             robot.getDrivetrain().gyroTurn(90,true);//rotates to face switch
-            robot.getDrivetrain().driveEncoderGyro(35.5, 40);//drives closer to switch //ToDo: find good power that works
-            robot.getLift().lift2(100);//lifts lift 1m
+            robot.getDrivetrain().driveEncoderGyro(8.5, 0.40);//drives closer to switch //ToDo: find good power that works
+            robot.getLift().lift2(200);//lifts lift 2m
             robot.getIntake().intakeSpitOut(1);//spits out cube
             sleep(1000);
             robot.getIntake().stopIntake();//stops intake
         }
-        else if (isScaleLeft()==false) {
-            logger.info("Switch is to the left and scale is to the right");
-            robot.getDrivetrain().driveEncoderGyro(360,40);//drives to side of switch //ToDo: find good power that works
+        else if (!isSwitchLeft()){
+            logger.info("Switch is to the right");
+            robot.getDrivetrain().driveEncoderGyro(360,0.40);//drives to side of switch //ToDo: find good power that works
             robot.getDrivetrain().gyroTurn(90,true);//rotates to face switch
-            robot.getDrivetrain().driveEncoderGyro(8.5, 40);//drives closer to switch //ToDo: find good power that works
-            robot.getLift().lift2(200);//lifts lift 2m
+            robot.getDrivetrain().driveEncoderGyro(35.5, 0.40);//drives closer to switch //ToDo: find good power that works
+            robot.getLift().lift2(100);//lifts lift 1m
             robot.getIntake().intakeSpitOut(1);//spits out cube
             sleep(1000);
             robot.getIntake().stopIntake();//stops intake
@@ -39,11 +39,11 @@ public class RightSideAuto extends AutoStrategy {
         else{
             //drive past baseline
             logger.info("Switch & Scale are to the left... doing baseline");
-            robot.getDrivetrain().driveEncoderGyro(415,40);//ToDo: find good power that works
+            robot.getDrivetrain().driveEncoderGyro(415,0.40);//ToDo: find good power that works
             robot.getDrivetrain().gyroTurn(90,true);
-            robot.getDrivetrain().driveEncoderGyro(523.5, 40);
+            robot.getDrivetrain().driveEncoderGyro(523.5, 0.40);
             robot.getDrivetrain().gyroTurn(90, true);
-            robot.getDrivetrain().driveEncoderGyro(140.5, 40);
+            robot.getDrivetrain().driveEncoderGyro(140.5, 0.40);
             robot.getLift().lift2(100);
             robot.getIntake().intakeSpitOut(1);
             sleep(1000);
