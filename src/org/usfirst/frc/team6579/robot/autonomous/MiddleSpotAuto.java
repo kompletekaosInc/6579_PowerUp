@@ -24,7 +24,7 @@ public class MiddleSpotAuto extends AutoStrategy {
         robot.getIntake().intakeSuckIn(0.15); //this is to make sure the cube stays in the robot, runs until we spit the cube back out
 
         //Drive to just in front of the cube stack
-        robot.getDrivetrain().driveEncoderGyro(30, 0.5);
+        robot.getDrivetrain().driveEncoderGyro(50, 0.5);
         robot.getDrivetrain().hardStop();
 
         robot.getLift().lift2(100);
