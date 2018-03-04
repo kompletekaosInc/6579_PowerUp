@@ -245,6 +245,32 @@ public class Drivetrain implements SubSystem {
     public void curveTurn(double targetAngle, boolean left)
     {
         //TODO:
+        logger.info("curveTurn [" + targetAngle + ":" + left + "]");
+        double turnPower = 0.30;
+        //double slowTurnPower = 0.25;
+
+        SmartDashboard.putNumber("curveTurn.targetAngle", targetAngle);
+        SmartDashboard.putBoolean("curveTurn.left", left);
+
+        // reset gyro sensor to zero
+        gyro.reset();   // do not calibrate as this will stop the world and make the gyro crazy
+
+        while ( Math.abs(getModGyroAngle()) < (Math.abs(targetAngle)))
+        {
+            if (left)
+            {
+                setPower(turnPower, 0);
+            }
+            else
+            {
+                // must want to turn right
+                setPower(0, turnPower);
+            }
+        }
+
+        //hardStop();
+
+        logger.info("curve turn finished");
     }
 
     /**
@@ -276,19 +302,7 @@ public class Drivetrain implements SubSystem {
                 setPower(-turnPower, turnPower);
             }
         }
-//        stop();
-//        while ( Math.abs(getModGyroAngle()) < (Math.abs(targetAngle)-5)){
-//
-//            if (left)
-//            {
-//                setPower(slowTurnPower, -slowTurnPower);
-//            }
-//            else
-//            {
-//                // must want to turn right
-//                setPower(-slowTurnPower, slowTurnPower);
-//            }
-//        }
+
         hardStop();
 
         logger.info("Gyro turn finished");
@@ -352,10 +366,20 @@ public class Drivetrain implements SubSystem {
      */
     public void driveStraight(double distance, double power){
         logger.info("driveStraight [distance:power][" + distance + ":" + power + "]");
-        driveStraightUsingEncoderGyro(distance-10, power);
-        driveStraightUsingEncoderGyro(10, power/2);
 
-        //hardStop();
+        if (distance < 25)
+        {
+            // just drive with given power)
+            driveStraightUsingEncoderGyro(distance, power);
+        }
+        else
+        {
+            // do some ramp up and down magic
+            driveStraightUsingEncoderGyro(10, power/2);
+            driveStraightUsingEncoderGyro(distance-25, power);
+            driveStraightUsingEncoderGyro(15, power/2);
+        }
+
     }
 
 

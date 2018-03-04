@@ -10,9 +10,9 @@ import org.usfirst.frc.team6579.robot.subsystem.Lift;
  * read from the field system the layout and position of the Switch and Scale and it make the decision based
  * on these field position.
  */
-public class MiddleSpotAuto extends AutoStrategy {
+public class CurveMiddleSpotAuto extends AutoStrategy {
 
-    public MiddleSpotAuto() {
+    public CurveMiddleSpotAuto() {
         // update logger class
         super.logger.getLogger( this.getClass().getName() );
     }
@@ -30,7 +30,7 @@ public class MiddleSpotAuto extends AutoStrategy {
         Lift lift = robot.getLift();
 
         //This is the knocking down of the intake, the wait is to make sure the cube falls before we drive off again
-        drivetrain.driveStraightUsingEncoderGyro(15, autoSpeed);
+        drivetrain.driveStraight(15, autoSpeed);
         drivetrain.hardStop();
         sleep(750);  // to give the cube time to drop
 
@@ -38,7 +38,7 @@ public class MiddleSpotAuto extends AutoStrategy {
         intake.intakeSuckIn(0.15); //this is to make sure the cube stays in the robot, runs until we spit the cube back out
 
         //Drive to just in front of the cube stack
-        drivetrain.driveStraight(50, 0.5);
+        drivetrain.driveStraight(30, 0.5);
         drivetrain.hardStop();
 
 
@@ -46,16 +46,16 @@ public class MiddleSpotAuto extends AutoStrategy {
 
         // now turn towards the side that has our switch plate
         if (isSwitchLeft()){
-            drivetrain.turn(60,true);
-            drivetrain.driveStraight(150,autoSpeed);
-            drivetrain.turn(60,false);
+            drivetrain.curveTurn(60,true);
+            drivetrain.driveStraight(120,autoSpeed);
+            drivetrain.curveTurn(60,false);
         }
         else{
             // switch is to the right hand side
-            drivetrain.turn(60,false);
-            drivetrain.driveStraight(125,autoSpeed);
-            drivetrain.hardStop();
-            drivetrain.turn(60,true);
+            drivetrain.curveTurn(60,false);
+            drivetrain.driveStraight(105,autoSpeed);
+            //drivetrain.hardStop();
+            drivetrain.curveTurn(60,true);
         }
 
 
@@ -63,7 +63,7 @@ public class MiddleSpotAuto extends AutoStrategy {
         long beginTimeHardStop = System.currentTimeMillis();
         while (System.currentTimeMillis()-beginTimeHardStop < 1000) {
 
-            drivetrain.setPower(0.42,0.42);
+            drivetrain.setPower(0.35,0.35);
         }
 
         // should have cube above switch plate. deliver cube

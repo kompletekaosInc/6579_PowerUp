@@ -65,6 +65,8 @@ public class  Robot extends IterativeRobot {
 
         autoChooser.addDefault("Middle auto", new MiddleSpotAuto());
 
+        autoChooser.addObject("Curve middle auto", new CurveMiddleSpotAuto());
+
         autoChooser.addObject("Left Spot", new LeftSideAuto());
 
         autoChooser.addObject("Right Spot", new RightSideAuto());
