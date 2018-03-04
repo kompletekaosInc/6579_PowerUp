@@ -233,19 +233,33 @@ public class Drivetrain implements SubSystem {
         leftToughbox.set(gyroMotorPowerLeft);
         rightToughbox.set(gyroMotorPowerRight);
     }
+
+    /**
+     * Performs a curve turn with the robot to the left (if left is true to the target angle.
+     * An error handler is implemented to interupt the turn after a reasonable amount of time
+     * has elapsed.
+     *
+     * @param targetAngle
+     * @param left
+     */
+    public void curveTurn(double targetAngle, boolean left)
+    {
+        //TODO:
+    }
+
     /**
      * Turns left if "left" is true otherwise turns right until the robot reaches the target angle.
      * @param targetAngle
      * @param left
      */
-    public void gyroTurn(double targetAngle, boolean left)
+    public void turn(double targetAngle, boolean left)
     {
-        logger.info("gyroTurn [" + targetAngle + ":" + left + "]");
+        logger.info("turn [" + targetAngle + ":" + left + "]");
         double turnPower = 0.3;
         double slowTurnPower = 0.25;
 
-        SmartDashboard.putNumber("gyroTurn.targetAngle", targetAngle);
-        SmartDashboard.putBoolean("gyroTurn.left", left);
+        SmartDashboard.putNumber("turn.targetAngle", targetAngle);
+        SmartDashboard.putBoolean("turn.left", left);
 
         // reset gyro sensor to zero
         gyro.reset();   // do not calibrate as this will stop the world and make the gyro crazy
@@ -298,35 +312,16 @@ public class Drivetrain implements SubSystem {
         drivetrainEncoder.reset();
     }
 
+
     /**
-     * Drives the robot a set distance using the encoder
+     * Drive the robot straight following the gyro for the given distance (based on the drive
+     * train encoder reading).
+     *
      * @param distance
      * @param power
      */
-    public void driveEncoder(double distance, double power){
-
-        double targetPulses = 0;
-
-        targetPulses = (distance / distancePerPulse);
-        SmartDashboard.putNumber("Target Pulses", targetPulses);
-
-        resetEncoder();
-
-        //double buffer = 0.1*targetPulses;
-
-        while (Math.abs(drivetrainEncoder.getRaw())<targetPulses){
-            setPower(power,power);
-            SmartDashboard.putNumber("Encoder distance", drivetrainEncoder.getDistance());
-        }
-        if (drivetrainEncoder.getRaw()>=targetPulses){
-            hardStop();
-            //stop();
-        }
-
-    }
-
-    public void driveStraight(double distance, double power){
-        logger.info("driveEncoderGyro [distance:power][" + distance + ":" + power + "]");
+    public void driveStraightUsingEncoderGyro(double distance, double power){
+        logger.info("driveStraight [distance:power][" + distance + ":" + power + "]");
         double gyroTarget = getGyroAngle();
 
         double targetPulses;
@@ -339,44 +334,30 @@ public class Drivetrain implements SubSystem {
         double slowDownTarget = targetPulses*0.01;
         //double buffer = 0.1*targetPulses;
 
-        while (Math.abs(drivetrainEncoder.getRaw())<(targetPulses-slowDownTarget)){
-            followGyro(power,gyroTarget);
+        while (Math.abs(drivetrainEncoder.getRaw())<(targetPulses-slowDownTarget)) {
+            followGyro(power, gyroTarget);
             //setPower(power,power);
             SmartDashboard.putNumber("Encoder distance", drivetrainEncoder.getDistance());
         }
+    }
 
-//        while (Math.abs(drivetrainEncoder.getRaw())<targetPulses){
-//            followGyro(0.15,gyroTarget);
-//        }
+
+    /**
+     * This method is the old method that now leverages logic from driveStraightUsingEncoderGyro.
+     * TODO: refine using a proportional calculation to ramp and ramp down the speed.
+     *
+     * @param distance
+     * @param power
+
+     */
+    public void driveStraight(double distance, double power){
+        logger.info("driveStraight [distance:power][" + distance + ":" + power + "]");
+        driveStraightUsingEncoderGyro(distance-10, power);
+        driveStraightUsingEncoderGyro(10, power/2);
+
         //hardStop();
-        //stop();
-//        if (drivetrainEncoder.getRaw()>=targetPulses){
-//            hardStop();
-//            //stop();
-//
-//        }
     }
 
-
-    public void driveEncoderGyro(double distance, double power){
-        logger.info("driveEncoderGyro [distance:power][" + distance + ":" + power + "]");
-        driveStraight(distance-10, power);
-        driveStraight(10, power/2);
-
-        hardStop();
-    }
-
-    public void drivePulses(int pulses){
-
-        while (drivetrainEncoder.getRaw()<pulses){
-            setPower(0.2,0.2);
-
-        }
-        if (drivetrainEncoder.getRaw()>=pulses){
-            hardStop();
-        }
-
-    }
 
     @Override
     public void publishStats(){

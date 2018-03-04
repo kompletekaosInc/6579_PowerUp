@@ -1,11 +1,8 @@
 package org.usfirst.frc.team6579.robot.subsystem;
 
-import edu.wpi.first.wpilibj.CounterBase;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team6579.robot.Robot;
 
 /**
  * This class is responsible for the lift mechanism on the robot. The lift mechanism is used to lift the intake from floor level to scale height.
@@ -21,12 +18,14 @@ import org.usfirst.frc.team6579.robot.Robot;
  */
 public class Lift implements SubSystem {
 
+    private static double HOLD_POWER = 0.05;
+
     private VictorSP liftMotor = new VictorSP(7);//should be port nine for testing on 2.2.18 Jiah Pang //changed to port 7 8.2.18 Jiah
 
 
     private Encoder liftEncoder = null;
 
-    public boolean getLift2 = false;
+    private boolean moving = false;
 
 
     public Lift(){
@@ -63,6 +62,8 @@ public class Lift implements SubSystem {
         liftMotor.set(0);
     }
 
+    public void hold() { liftMotor.set(HOLD_POWER); }
+
     public void resetEncoder(){
         liftEncoder.reset();
     }
@@ -71,15 +72,16 @@ public class Lift implements SubSystem {
      * Lifts the lift mechanism for a certain height specified in cm
      * @param targetDistance
      */
-    public void lift2(double targetDistance){
+    public void raiseToHeight(double targetDistance){
 
-        getLift2 = true;
+        moving = true;
         while(getDistance() < targetDistance)
         {
             liftMotor.set(1);
         }
-        liftMotor.set(0);
-        getLift2 = false;
+        stop();
+        hold();
+        moving = false;
 
 
         //new Thread(worker).start();
@@ -87,11 +89,11 @@ public class Lift implements SubSystem {
     }
 
     public boolean isMoving(){
-        return getLift2;
+        return moving;
     }
 
     public double getDistance(){
-        return liftEncoder.getRaw()*0.027; //lift travels 0.027cm per pulse calculated by practical experiment where lift raised 68cm in 2510 pulses
+        return (liftEncoder.getRaw()*0.04771084337); //lift travels 0.027cm per pulse calculated by practical experiment where lift raised 68cm in 2510 pulses
     }
 
     @Override
@@ -114,12 +116,12 @@ public class Lift implements SubSystem {
 
 //    private Runnable worker = new Runnable()
 //    {
-//        getLift2 = true;
+//        moving = true;
 //            while(getDistance() < targetDistance)
 //        {
 //            liftMotor.set(1);
 //        }
 //            liftMotor.set(0);
-//        getLift2 = false;
+//        moving = false;
 //    }
 }

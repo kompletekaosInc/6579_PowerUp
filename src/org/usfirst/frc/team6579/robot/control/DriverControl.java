@@ -1,7 +1,6 @@
 package org.usfirst.frc.team6579.robot.control;
 
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team6579.robot.Robot;
 import org.usfirst.frc.team6579.robot.subsystem.Drivetrain;
@@ -78,12 +77,13 @@ public class DriverControl extends JoystickControl  {
         robot.getIntake().intakeSpitOut(1);
 
     }
-//    protected void processButton3(Robot robot ) {
-//        robot.getClimber().lowerArm();
-//    }
-//    protected void processButton4(Robot robot ) {
-//        robot.getClimber().raiseArm();
-//    }
+    protected void processButton3(Robot robot ) {
+        //robot.getClimber().lowerArm25();
+        robot.getIntake().intakeSuckIn(0.1);
+    }
+    protected void processButton4(Robot robot ) {
+        //robot.getClimber().raiseArm25();
+    }
     protected void processButton5(Robot robot ) {
         //robot.getLift().liftDown(100);
         //robot.getDrivetrain().hardStop();
@@ -95,7 +95,7 @@ public class DriverControl extends JoystickControl  {
     protected void processButton7(Robot robot ) {
         //robot.getIntake().intakeSpitOut(0.5);
         //robot.getIntake().intakeSuckIn(0.05);
-        robot.getDrivetrain().gyroTurn(45,true);
+        robot.getDrivetrain().turn(45,true);
 
     }
     protected void processButton8(Robot robot ) {
@@ -106,7 +106,7 @@ public class DriverControl extends JoystickControl  {
     }
     protected void processButton9(Robot robot ) {
         //robot.getIntake().intakeSpitOut(1);
-        robot.getDrivetrain().driveEncoderGyro(200,0.5);
+        robot.getDrivetrain().driveStraight(200,0.5);
 
     }
     protected void processButton10(Robot robot ) {
@@ -130,7 +130,7 @@ public class DriverControl extends JoystickControl  {
 
     }
     protected void processNoButtons(Robot robot ) {
-        robot.getLift().stop();
+        //robot.getLift().stop();
         robot.getClimber().stopArm();
         robot.getIntake().stopIntake();
         SmartDashboard.putNumber("Throttle",stick.getThrottle());
