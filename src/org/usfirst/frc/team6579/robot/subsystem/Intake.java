@@ -1,9 +1,7 @@
 package org.usfirst.frc.team6579.robot.subsystem;
 
-import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.VictorSP;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is responsible for the intake mechanism on the robot
@@ -28,9 +26,9 @@ public class Intake implements SubSystem {
     private SpeedControllerGroup leftIntakeMotors = new SpeedControllerGroup(intakeLeft4,intakeLeft5);
 
     //Right motor controller group
-    private VictorSP intakeRight8 = new VictorSP(5);
-    private VictorSP intakeRight9 = new VictorSP(6);
-    private SpeedControllerGroup rightIntakeMotors = new SpeedControllerGroup(intakeRight8,intakeRight9);
+    private VictorSP intakeRight5 = new VictorSP(5);
+    private VictorSP intakeRight6 = new VictorSP(6);
+    private SpeedControllerGroup rightIntakeMotors = new SpeedControllerGroup(intakeRight5, intakeRight6);
 
 
     /**
