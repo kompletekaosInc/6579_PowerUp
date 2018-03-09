@@ -167,7 +167,13 @@ public class  Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopInit() {
-        resetSensors();
+//        if (autoStrategy != null){
+//            autoStrategy.cancel();//only seems to work for command based system
+//        }
+
+        //autoStrategy.end();
+
+	    resetSensors();
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();

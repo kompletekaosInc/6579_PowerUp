@@ -93,4 +93,8 @@ public abstract class AutoStrategy {
             e.printStackTrace();
         }
     }
+
+    public void end(){
+
+    }
 }

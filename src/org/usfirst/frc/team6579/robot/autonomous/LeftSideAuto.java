@@ -23,14 +23,14 @@ public class LeftSideAuto extends AutoStrategy {
         //drops the cube
         drivetrain.driveStraight(15, 40);
         drivetrain.hardStop();
-        sleep(750);  // to give the cube time to drop
+        sleep(500);  // to give the cube time to drop
 
         lift.raiseToHeight(20);
 
         if (isSwitchLeft()){
             logger.info("Scale is to the right and Switch is to the left");
 
-            drivetrain.driveStraight(385,0.60);//drives to side of switch //ToDo: find good power that works
+            drivetrain.driveStraight(370,0.60);//drives to side of switch //ToDo: find good power that works
             drivetrain.hardStop();
             drivetrain.turn(90,false);//rotates to face switch
             lift.raiseToHeight(80);//lifts lift to the 1m mark
