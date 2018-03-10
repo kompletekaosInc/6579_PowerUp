@@ -17,23 +17,23 @@ public class RightSideAuto extends AutoStrategy {
     @Override
     public void doStrategy(Robot robot) {
 
-        //Just copypasta from leftsideauto, double check if possible
         //Assuming robot is lined up with very far corner of base plate
 
         Drivetrain drivetrain = robot.getDrivetrain();
         Intake intake = robot.getIntake();
         Lift lift = robot.getLift();
 
+        //drops the cube
+        drivetrain.driveStraight(15, 40);
+        drivetrain.hardStop();
+        sleep(500);  // to give the cube time to drop
+
+        lift.raiseToHeight(20);
 
         if (!isSwitchLeft()){
             logger.info("Scale is to the right and Switch is to the left");
-            drivetrain.driveStraight(15, 40);
-            drivetrain.hardStop();
-            sleep(750);  // to give the cube time to drop
 
-            lift.raiseToHeight(20);
-
-            drivetrain.driveStraight(425,0.60);//drives to side of switch //ToDo: find good power that works
+            drivetrain.driveStraight(370,0.60);//drives to side of switch //ToDo: find good power that works
             drivetrain.hardStop();
             drivetrain.turn(90,true);//rotates to face switch
             lift.raiseToHeight(80);//lifts lift to the 1m mark
@@ -52,17 +52,18 @@ public class RightSideAuto extends AutoStrategy {
             intake.stopIntake();//stops intake
 
             //stretch component
-
-
-
+            drivetrain.driveStraight(50,-40);//check that backwards works for this
+            lift.liftDown(1);
+            sleep(2000);
 
         }
         else if (!isScaleLeft()) {
             logger.info("Scale is to the left");
-            drivetrain.driveStraight(700,0.40);//drives to side of switch //ToDo: find distances
+            drivetrain.driveStraight(625,0.60);//drives to side of switch //ToDo: find distances
             drivetrain.turn(30,true);//rotates to face switch
-            drivetrain.driveStraight(845, 0.40);//drives closer to switch //ToDo: find good power that works
-            lift.raiseToHeight(200);//lifts lift 2m
+            lift.raiseToHeight(180);//raises lift to 2m
+            drivetrain.driveStraight(50, 0.40);//drives closer to switch //ToDo: find good power that works
+
             intake.intakeSpitOut(1);//spits out cube
             sleep(1000);
             intake.stopIntake();//stops intake
@@ -80,6 +81,7 @@ public class RightSideAuto extends AutoStrategy {
                 drivetrain.setPower(0.5,0.5);
                 intake.intakeSuckIn(1);
             }
+
 
 
         }
