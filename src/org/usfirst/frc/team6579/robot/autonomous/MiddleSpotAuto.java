@@ -30,7 +30,7 @@ public class MiddleSpotAuto extends AutoStrategy {
         Lift lift = robot.getLift();
 
         //This is the knocking down of the intake, the wait is to make sure the cube falls before we drive off again
-        drivetrain.driveStraightUsingEncoderGyro(15, autoSpeed);
+        drivetrain.driveStraight(15, autoSpeed);
         drivetrain.hardStop();
         sleep(750);  // to give the cube time to drop
 

@@ -75,9 +75,14 @@ public class Lift implements SubSystem {
     public void raiseToHeight(double targetDistance){
 
         moving = true;
-        while(getDistance() < targetDistance)
+
+        long startTime = System.currentTimeMillis();
+        long timeTaken = 0;
+
+        while ( (getDistance() < targetDistance) && (timeTaken < 5000) )
         {
             liftMotor.set(1);
+            timeTaken = System.currentTimeMillis() - startTime;
         }
         stop();
         hold();

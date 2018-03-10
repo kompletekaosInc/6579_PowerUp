@@ -290,7 +290,10 @@ public class Drivetrain implements SubSystem {
         // reset gyro sensor to zero
         gyro.reset();   // do not calibrate as this will stop the world and make the gyro crazy
 
-        while ( Math.abs(getModGyroAngle()) < (Math.abs(targetAngle)))
+        long startTime = System.currentTimeMillis();
+        long timeTaken = 0;
+
+        while ( (Math.abs(getModGyroAngle()) < (Math.abs(targetAngle-10))) && (timeTaken < 5000) )
         {
             if (left)
             {
@@ -301,6 +304,8 @@ public class Drivetrain implements SubSystem {
                 // must want to turn right
                 setPower(-turnPower, turnPower);
             }
+
+            timeTaken = System.currentTimeMillis() - startTime;
         }
 
         hardStop();
@@ -348,10 +353,15 @@ public class Drivetrain implements SubSystem {
         double slowDownTarget = targetPulses*0.01;
         //double buffer = 0.1*targetPulses;
 
-        while (Math.abs(drivetrainEncoder.getRaw())<(targetPulses-slowDownTarget)) {
+        long startTime = System.currentTimeMillis();
+        long timeTaken = 0;
+
+        while ((Math.abs(drivetrainEncoder.getRaw())<(targetPulses-slowDownTarget)) && (timeTaken < 5000) ){
             followGyro(power, gyroTarget);
             //setPower(power,power);
             SmartDashboard.putNumber("Encoder distance", drivetrainEncoder.getDistance());
+
+            timeTaken = System.currentTimeMillis() - startTime;
         }
     }
 
@@ -367,7 +377,7 @@ public class Drivetrain implements SubSystem {
     public void driveStraight(double distance, double power){
         logger.info("driveStraight [distance:power][" + distance + ":" + power + "]");
 
-        if (distance < 25)
+        if (distance < 50)
         {
             // just drive with given power)
             driveStraightUsingEncoderGyro(distance, power);
@@ -375,9 +385,9 @@ public class Drivetrain implements SubSystem {
         else
         {
             // do some ramp up and down magic
-            driveStraightUsingEncoderGyro(10, power/2);
-            driveStraightUsingEncoderGyro(distance-25, power);
-            driveStraightUsingEncoderGyro(15, power/2);
+            driveStraightUsingEncoderGyro(20, power/2);
+            driveStraightUsingEncoderGyro(distance-50, power);
+            driveStraightUsingEncoderGyro(30, power/2);
         }
 
     }

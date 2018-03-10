@@ -79,7 +79,7 @@ public class DriverControl extends JoystickControl  {
     }
     protected void processButton3(Robot robot ) {
         //robot.getClimber().lowerArm25();
-        robot.getIntake().intakeSuckIn(0.1);
+        robot.getIntake().intakeSpitOut(0.5);
     }
     protected void processButton4(Robot robot ) {
         //robot.getClimber().raiseArm25();

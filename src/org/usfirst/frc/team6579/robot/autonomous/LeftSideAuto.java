@@ -20,20 +20,24 @@ public class LeftSideAuto extends AutoStrategy {
         Intake intake = robot.getIntake();
         Lift lift = robot.getLift();
 
+        intake.intakeSuckIn(0.15);
         //drops the cube
-        drivetrain.driveStraight(15, 40);
+        drivetrain.driveStraight(15, 0.40);
         drivetrain.hardStop();
-        sleep(500);  // to give the cube time to drop
+        sleep(750);  // to give the cube time to drop
+
 
         lift.raiseToHeight(20);
 
-        if (isSwitchLeft()){
-            logger.info("Scale is to the right and Switch is to the left");
 
-            drivetrain.driveStraight(370,0.60);//drives to side of switch //ToDo: find good power that works
+        if (isSwitchLeft()){
+            logger.info("Switch is to the left");
+
+
+            drivetrain.driveStraight(370,0.40);//drives to side of switch //ToDo: find good power that works
             drivetrain.hardStop();
             drivetrain.turn(90,false);//rotates to face switch
-            lift.raiseToHeight(80);//lifts lift to the 1m mark
+            lift.raiseToHeight(100);//lifts lift to the 1m mark
 
             // robot.getDrivetrain().driveStraight(35.5, 0.40);//drives closer to switch //ToDo: find good power that works
 
@@ -41,7 +45,7 @@ public class LeftSideAuto extends AutoStrategy {
             long beginTimeToSwitch = System.currentTimeMillis();
             while (System.currentTimeMillis()-beginTimeToSwitch < 2000) {
 
-                drivetrain.setPower(0.5,0.5);
+                drivetrain.setPower(0.3,0.3);
             }
 
             intake.intakeSpitOut(1);//spits out cube
@@ -49,41 +53,45 @@ public class LeftSideAuto extends AutoStrategy {
             intake.stopIntake();//stops intake
 
             //stretch component
-            drivetrain.driveStraight(50,-40);//check that backwards works for this
-            lift.liftDown(1);
+            drivetrain.driveStraight(100,-0.40);//check that backwards works for this
+            lift.liftDown(0.5);
             sleep(2000);
+            lift.stop();
+
+
 
         }
         else if (isScaleLeft()) {
             logger.info("Scale is to the left");
-            drivetrain.driveStraight(625,0.60);//drives to side of switch //ToDo: find distances
+            drivetrain.driveStraight(625,0.50);//drives to side of switch //ToDo: find distances
             drivetrain.turn(30,false);//rotates to face switch
             lift.raiseToHeight(180);//raises lift to 2m
-            drivetrain.driveStraight(50, 0.40);//drives closer to switch //ToDo: find good power that works
+            drivetrain.driveStraight(55, 0.40);//drives closer to switch //ToDo: find good power that works
 
             intake.intakeSpitOut(1);//spits out cube
             sleep(1000);
             intake.stopIntake();//stops intake
 
             //stretch
-            drivetrain.driveStraight(50,-40);//check that backwards works for this
-            lift.liftDown(1);
+            drivetrain.driveStraight(100,-0.40);//check that backwards works for this
+            lift.liftDown(0.7);
             sleep(3000);
+            lift.stop();
 
             //extra stretch
-            drivetrain.turn(100,false);
-            long beginTimeHardStop = System.currentTimeMillis();
-            while (System.currentTimeMillis()-beginTimeHardStop < 3000) {
-
-                drivetrain.setPower(0.5,0.5);
-                intake.intakeSuckIn(1);
-            }
+//            drivetrain.turn(100,false);
+//            long beginTimeHardStop = System.currentTimeMillis();
+//            while (System.currentTimeMillis()-beginTimeHardStop < 3000) {
+//
+//                drivetrain.setPower(0.5,0.5);
+//                intake.intakeSuckIn(1);
+//            }
 
 
 
         }
-
-        else{
+        else
+            {
             //drive past baseline
 //            logger.info("Switch & Scale are to the left... doing baseline");
 //            robot.getDrivetrain().driveStraight(415,0.40);//ToDo: find good power that works
@@ -99,9 +107,10 @@ public class LeftSideAuto extends AutoStrategy {
             long beginTimeHardStop = System.currentTimeMillis();
             while (System.currentTimeMillis()-beginTimeHardStop < 3000) {
 
-                drivetrain.setPower(0.5,0.5);
+                drivetrain.setPower(0.4,0.4);
             }
 
+                System.out.println("Else statement for Left side auto");
         }
 
         System.out.println("Left Side Auto complete...");
