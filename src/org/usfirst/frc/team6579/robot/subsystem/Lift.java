@@ -18,7 +18,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Lift implements SubSystem {
 
-    private static double HOLD_POWER = 0.05;
+    private static double HOLD_POWER = 0.1;
 
     private VictorSP liftMotor = new VictorSP(7);//should be port nine for testing on 2.2.18 Jiah Pang //changed to port 7 8.2.18 Jiah
 
@@ -59,10 +59,14 @@ public class Lift implements SubSystem {
     }
 
     public void stop(){
+        System.out.println("Lift.stop");
         liftMotor.set(0);
     }
 
-    public void hold() { liftMotor.set(HOLD_POWER); }
+    public void hold() {
+        System.out.println("Lift.hold");
+        liftMotor.set(0.2);
+    }
 
     public void resetEncoder(){
         liftEncoder.reset();

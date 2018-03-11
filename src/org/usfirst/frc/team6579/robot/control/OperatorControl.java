@@ -71,7 +71,8 @@ public class OperatorControl extends JoystickControl {
     protected void processButton10(Robot robot){
         //robot.getIntake().intakeSuckIn(0.1);
         //unused button
-        robot.getLift().raiseToHeight(100);
+        //robot.getLift().raiseToHeight(100);
+        robot.getLift().liftUp(0.5);
     }
 
     @Override
@@ -87,10 +88,11 @@ public class OperatorControl extends JoystickControl {
     @Override
     protected void processNoButtons(Robot robot){
         //if statement makes sure the lift doesn't stop if raiseToHeight is in use
-        if (!robot.getLift().isMoving()){
-            robot.getLift().stop();
-        }
-        robot.getLift().stop();//stop then hold
+//        if (!robot.getLift().isMoving()){
+//            robot.getLift().stop();
+//        }
+        System.out.println("Operator no buttons");
+        //robot.getLift().stop();//stop then hold
         robot.getLift().hold();
         robot.getClimber().stopWinch();
         robot.getClimber().stopArm();

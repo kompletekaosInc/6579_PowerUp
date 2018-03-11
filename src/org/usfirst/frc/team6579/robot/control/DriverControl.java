@@ -136,6 +136,7 @@ public class DriverControl extends JoystickControl  {
         SmartDashboard.putNumber("Throttle",stick.getThrottle());
         SmartDashboard.putNumber("AdjustedThrottle",((stick.getThrottle()-1)/-2));
         robot.getClimber().stopWinch();
+        System.out.println("driver no buttons");
 
     }
 

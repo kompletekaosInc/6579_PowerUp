@@ -85,7 +85,7 @@ public class  Robot extends IterativeRobot {
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
-        System.out.println("robotInit: [build=Jiah:Last day 12noon]" + dateFormat.format(date));
+        System.out.println("robotInit: [build=Jiah:compDay1]" + dateFormat.format(date));
 
         populateAutoSelector();
 
@@ -179,7 +179,7 @@ public class  Robot extends IterativeRobot {
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
-        System.out.println("teleopInit: [build=JustinJiah:21:09]" + dateFormat.format(date));
+        System.out.println("teleopInit: [build=JiahON DAY:21:09]" + dateFormat.format(date));
 //        //Encoder sampleEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
 //
 //

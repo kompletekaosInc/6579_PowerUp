@@ -22,38 +22,45 @@ public class MiddleSpotAuto extends AutoStrategy {
 
         logger.info("Starting MiddleSpotAuto strategy");
 
-        double autoSpeed=0.5;
+        double autoSpeed=0.7;
 
         // grab the main subsystems needed for auto
         Drivetrain drivetrain = robot.getDrivetrain();
         Intake intake = robot.getIntake();
         Lift lift = robot.getLift();
 
+
+        intake.intakeSuckIn(0.15); //this is to make sure the cube stays in the robot, runs until we spit the cube back out
+
         //This is the knocking down of the intake, the wait is to make sure the cube falls before we drive off again
-        drivetrain.driveStraight(15, autoSpeed);
+        drivetrain.driveStraight(5, 0.7);
         drivetrain.hardStop();
         sleep(750);  // to give the cube time to drop
 
 
-        intake.intakeSuckIn(0.15); //this is to make sure the cube stays in the robot, runs until we spit the cube back out
 
         //Drive to just in front of the cube stack
-        drivetrain.driveStraight(50, 0.5);
+        drivetrain.driveStraightUsingEncoderGyro(10, 0.50/2);
+        drivetrain.driveStraightUsingEncoderGyro(20, 0.5);
+        drivetrain.driveStraightUsingEncoderGyro(10, 0.5/2);
+
         drivetrain.hardStop();
 
 
+        intake.stopIntake();
         lift.raiseToHeight(100);
 
+        intake.intakeSuckIn(0.15);
         // now turn towards the side that has our switch plate
         if (isSwitchLeft()){
             drivetrain.turn(60,true);
-            drivetrain.driveStraight(150,autoSpeed);
+            drivetrain.driveStraight(160,autoSpeed);
             drivetrain.turn(60,false);
         }
         else{
             // switch is to the right hand side
             drivetrain.turn(60,false);
-            drivetrain.driveStraight(125,autoSpeed);
+            drivetrain.driveStraight(135,autoSpeed);
             drivetrain.hardStop();
             drivetrain.turn(60,true);
         }
@@ -61,7 +68,7 @@ public class MiddleSpotAuto extends AutoStrategy {
 
         // drive for a time period to push robot up to the switch side wall (distance might get stalled and never reach target
         long beginTimeHardStop = System.currentTimeMillis();
-        while (System.currentTimeMillis()-beginTimeHardStop < 1000) {
+        while (System.currentTimeMillis()-beginTimeHardStop < 1300) {
 
             drivetrain.setPower(0.42,0.42);
         }
