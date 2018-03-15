@@ -34,6 +34,10 @@ public class Climber implements SubSystem {
 
     public void lowerArm25() { armMotor.set(-0.4); }
 
+    public void completelyLowerArm100(){
+        armMotor.set(-1);
+    }
+
     public void stopArm() { armMotor.set(0); }
 
     /**

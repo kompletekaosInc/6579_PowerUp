@@ -65,7 +65,7 @@ public class Lift implements SubSystem {
 
     public void hold() {
         System.out.println("Lift.hold");
-        liftMotor.set(0.2);
+        liftMotor.set(0.15);
     }
 
     public void resetEncoder(){
@@ -110,6 +110,7 @@ public class Lift implements SubSystem {
         SmartDashboard.putNumber("Lift encoder pulses", liftEncoder.getRaw());
         SmartDashboard.putNumber("Lift encoder distance", liftEncoder.getDistance()); //comparing the encoder's getDistance to our own calculation
         SmartDashboard.putNumber("Lift distance", getDistance()); //this is the accurate calculation
+        SmartDashboard.putNumber("Lift Power", liftMotor.get());
     }
 
     @Override

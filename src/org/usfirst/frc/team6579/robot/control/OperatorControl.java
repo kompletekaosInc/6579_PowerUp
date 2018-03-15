@@ -1,5 +1,6 @@
 package org.usfirst.frc.team6579.robot.control;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team6579.robot.Robot;
 
 
@@ -32,6 +33,7 @@ public class OperatorControl extends JoystickControl {
         System.out.println("in processButton11");
 //      robot.getClimber().lowerArm();
         robot.getClimber().lowerArm25();
+        SmartDashboard.putBoolean("arm motor down",true);
     }
 
     @Override
@@ -65,6 +67,7 @@ public class OperatorControl extends JoystickControl {
     @Override
     protected void processButton2(Robot robot) {
         //robot.getIntake().intakeSpitOut(1);
+        robot.getClimber().completelyLowerArm100();
     }
 
     @Override
@@ -96,6 +99,8 @@ public class OperatorControl extends JoystickControl {
         robot.getLift().hold();
         robot.getClimber().stopWinch();
         robot.getClimber().stopArm();
+        SmartDashboard.putBoolean("arm motor down",false);
+
         //robot.getIntake().stopIntake();
     }
 

@@ -59,35 +59,35 @@ public class RightSideAuto extends AutoStrategy {
             lift.stop();
 
         }
-        else if (!isScaleLeft()) {
-            logger.info("Switch is to the left and scale is to the right");
-            drivetrain.driveStraight(625,0.50);//drives to side of switch //ToDo: find distances
-            drivetrain.turn(30,true);//rotates to face switch
-            lift.raiseToHeight(180);//raises lift to 2m
-            drivetrain.driveStraight(55, 0.40);//drives closer to switch //ToDo: find good power that works
-
-            intake.intakeSpitOut(1);//spits out cube
-            sleep(1000);
-            intake.stopIntake();//stops intake
-
-            //stretch
-            drivetrain.driveStraight(100,-0.40);//check that backwards works for this
-            lift.liftDown(0.7);
-            sleep(3000);
-            lift.stop();
-
-            //extra stretch
-//            drivetrain.turn(100,true);
-//            long beginTimeHardStop = System.currentTimeMillis();
-//            while (System.currentTimeMillis()-beginTimeHardStop < 3000) {
+//        else if (!isScaleLeft()) {
+//            logger.info("Switch is to the left and scale is to the right");
+//            drivetrain.driveStraight(625,0.50);//drives to side of switch //ToDo: find distances
+//            drivetrain.turn(30,true);//rotates to face switch
+//            lift.raiseToHeight(180);//raises lift to 2m
+//            drivetrain.driveStraight(55, 0.40);//drives closer to switch //ToDo: find good power that works
 //
-//                drivetrain.setPower(0.5,0.5);
-//                intake.intakeSuckIn(1);
-//            }
-
-
-
-        }
+//            intake.intakeSpitOut(1);//spits out cube
+//            sleep(1000);
+//            intake.stopIntake();//stops intake
+//
+//            //stretch
+//            drivetrain.driveStraight(100,-0.40);//check that backwards works for this
+//            lift.liftDown(0.7);
+//            sleep(3000);
+//            lift.stop();
+//
+//            //extra stretch
+////            drivetrain.turn(100,true);
+////            long beginTimeHardStop = System.currentTimeMillis();
+////            while (System.currentTimeMillis()-beginTimeHardStop < 3000) {
+////
+////                drivetrain.setPower(0.5,0.5);
+////                intake.intakeSuckIn(1);
+////            }
+//
+//
+//
+//        }
 
         else{
             //drive past baseline
