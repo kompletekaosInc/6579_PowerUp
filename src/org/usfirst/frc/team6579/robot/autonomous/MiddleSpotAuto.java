@@ -48,7 +48,7 @@ public class MiddleSpotAuto extends AutoStrategy {
 
 
         intake.stopIntake();
-        lift.raiseToHeight(100);
+        lift.raiseToHeight(90);//was 100
 
         intake.intakeSuckIn(0.15);
         // now turn towards the side that has our switch plate
@@ -68,9 +68,9 @@ public class MiddleSpotAuto extends AutoStrategy {
 
         // drive for a time period to push robot up to the switch side wall (distance might get stalled and never reach target
         long beginTimeHardStop = System.currentTimeMillis();
-        while (System.currentTimeMillis()-beginTimeHardStop < 1300) {
+        while (System.currentTimeMillis()-beginTimeHardStop < 1000) {//was 1300
 
-            drivetrain.setPower(0.42,0.42);
+            drivetrain.setPower(0.5,0.5);//was 0.42
         }
 
         // should have cube above switch plate. deliver cube

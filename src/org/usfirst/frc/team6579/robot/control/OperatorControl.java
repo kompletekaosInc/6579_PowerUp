@@ -22,7 +22,8 @@ public class OperatorControl extends JoystickControl {
 
     @Override
     protected void processButton9(Robot robot) {
-        robot.getLift().resetEncoder();
+        //robot.getLift().resetEncoder();
+             //robot.getLift().raiseToHeight(180);
         //System.out.println("in processButton9");
         //robot.getClimber().stopArm();
         //not used practically
@@ -75,7 +76,7 @@ public class OperatorControl extends JoystickControl {
         //robot.getIntake().intakeSuckIn(0.1);
         //unused button
         //robot.getLift().raiseToHeight(100);
-        robot.getLift().liftUp(0.5);
+        robot.getLift().liftDown(0.74);
     }
 
     @Override
@@ -85,7 +86,7 @@ public class OperatorControl extends JoystickControl {
 
     @Override
     protected void processButton7(Robot robot){
-        robot.getLift().liftDown(1);
+        robot.getLift().liftDown(0.81);
     }
 
     @Override

@@ -59,6 +59,10 @@ public abstract class AutoStrategy {
             // no game data???, assume both switch and scale are to the left
             logger.info("No game data?  Assuming things are left");
         }
+
+//        switchIsLeft=false;
+//        scaleIsLeft=true;
+
     }
 
     /**

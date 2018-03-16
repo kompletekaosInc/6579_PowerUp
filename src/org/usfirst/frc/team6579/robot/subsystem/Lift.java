@@ -65,7 +65,7 @@ public class Lift implements SubSystem {
 
     public void hold() {
         System.out.println("Lift.hold");
-        liftMotor.set(0.15);
+        liftMotor.set(0.2);
     }
 
     public void resetEncoder(){
@@ -102,7 +102,7 @@ public class Lift implements SubSystem {
     }
 
     public double getDistance(){
-        return (liftEncoder.getRaw()*0.04771084337); //lift travels 0.027cm per pulse calculated by practical experiment where lift raised 68cm in 2510 pulses
+        return (liftEncoder.getRaw()*0.0734484025); //lift travels 0.0734484025cm per pulse calculated by practical experiment where lift raised 68cm in 2510 pulses
     }
 
     @Override
