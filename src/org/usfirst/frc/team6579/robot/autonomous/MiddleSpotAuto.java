@@ -48,7 +48,13 @@ public class MiddleSpotAuto extends AutoStrategy {
 
 
         intake.stopIntake();
-        lift.raiseToHeight(90);//was 100
+        //lift.raiseToHeight(90);//was 100
+        long beginTimeHardStop1 = System.currentTimeMillis();
+        while (System.currentTimeMillis()-beginTimeHardStop1 < 1000) {//was 1300
+
+            lift.liftUp(1);//was 0.42
+        }
+        lift.stop();
 
         intake.intakeSuckIn(0.15);
         // now turn towards the side that has our switch plate
