@@ -29,7 +29,12 @@ public class RightSideAuto extends AutoStrategy {
         drivetrain.hardStop();
         sleep(750);  // to give the cube time to drop
 
-        lift.raiseToHeight(20);
+        //lift.raiseToHeight(20);
+
+        float liftTimer1 = System.currentTimeMillis();
+        while (System.currentTimeMillis()-liftTimer1<500){
+            lift.liftUp(1);
+        }
 
         if (!isSwitchLeft()){
             logger.info("Switch is to the right");
@@ -37,7 +42,7 @@ public class RightSideAuto extends AutoStrategy {
             drivetrain.driveStraight(370,0.40);//drives to side of switch //ToDo: find good power that works
             drivetrain.hardStop();
             drivetrain.turn(90,true);//rotates to face switch
-            lift.raiseToHeight(100);//lifts lift to the 1m mark
+            //lift.raiseToHeight(100);//lifts lift to the 1m mark
 
             // robot.getDrivetrain().driveStraight(35.5, 0.40);//drives closer to switch //ToDo: find good power that works
 

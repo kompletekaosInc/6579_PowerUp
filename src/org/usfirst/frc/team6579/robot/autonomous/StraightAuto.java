@@ -23,7 +23,7 @@ public class StraightAuto extends AutoStrategy {
         sleep(750);  // to give the cube time to drop
 
 
-        lift.raiseToHeight(20);
+        //lift.raiseToHeight(20);
 
         long beginTimeHardStop = System.currentTimeMillis();
         while (System.currentTimeMillis()-beginTimeHardStop < 3000) {
